@@ -10,48 +10,66 @@
 <html>
 <head>
     <title>Inicio de Sesion</title>
+
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/recursos/css/estilo_login.css" type="text/css">
 </head>
 <body>
-<br/><br/><br/><br/><br/><br/>
-<h1 align="center">INICIO DE SESION</h1>
-<br/><br/><br/>
-<form:form action="procesarLogin" modelAttribute="usuario">
-<table  align="center">
-<tr>
-    <td>
-        <form:label path="nombreUsuario">Usuario</form:label>
-    </td>
-    <td>
-        <form:input path="nombreUsuario" name="nombreUsuario" id="nombreUsuario"/>
-    </td>
-</tr>
-<tr>
-    <td>
-        <form:label path="passwrd">Password</form:label>
-    </td>
-    <td>
-        <form:password path="passwrd" name="password" id="password"/>
-    </td>
-</tr>
- <tr>
-     <td></td>
-     <td>
-         <form:button id="loguear" name="loguear">Iniciar Sesion</form:button>
-     </td>
- </tr>
-    <tr></tr>
-    <tr>
-        <td></td>
-        <td><a href="index">Atras</a> </td>
-    </tr>
 
+<div id="cuadro">
+    <div id="cabeza">Inicio de Sesion</div>
+    <div id="cuerpo">
 
-</table>
+        <form:form action="procesarLogin" modelAttribute="usuario">
+            <table align="center">
+         <tr>
+       <td> <form:label path="nombreUsuario">Usuario</form:label></td>
+       <td><form:input path="nombreUsuario" name="nombreUsuario" id="nombreUsuario"/></td>
+         </tr>
+                <tr>
+            <td>  <form:label path="passwrd">Password</form:label></td>
+                    <td> <form:password path="passwrd" name="password" id="password"/></td>
+                </tr>
+                <tr>
+                   <td></td><td></td>
+                </tr>
+             <tr>
+                 <td></td><td></td><td></td>
+            <td><form:button id="loguear" name="loguear">Iniciar Sesion</form:button></td>
+             </tr>
+            </table>
 
+        </form:form>
 
-</form:form>
-</br></br></br></br></br></br>
-<h2>${registoIncorrecto}</h2>
+    </div>
 
+</div>
+
+<p>${registoIncorrecto}</p>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+body{
+    background: #55acee;
+}
+#cuadro{
+    width: 550px;
+    border-bottom: 1px solid #7abaff;
+    border-top: 1px solid #7abaff;
+    border-left: 1px solid #7abaff;
+    border-right: 1px solid #7abaff;
+    margin: auto;
+    margin-top: 190px;
+    border-radius: 10px;
+}
+#cabeza{
+    padding-left: 5px;
+    padding-top: 6px;
+    color: white;
+    width: 548px;
+    background: #bae1ff;
+    height: 35px;
+    border-radius: 10px 10px 0px 0px;
+    font-family: "Comic Sans MS";
+    font-size: large;
+}
+#cuerpo{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 25px;
+    height: 170px;
+    border-radius: 0px 0px 10px 10px;
+    background: white;
+}
+p{
+    color: red;
+    padding-top: 400px;
+}
