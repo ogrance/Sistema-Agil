@@ -2,18 +2,38 @@ package SistemaAgil_IS2.model;
 
 public class Usuario {
     private Integer idUsuario;
-    private String nombre;
     private String nombreUsuario;
+    private String nombre;
+    private String apellido;
     private String passwrd;
+    private String status;
+
+    public Usuario(Integer idUsuario, String nombreUsuario, String nombre, String apellido, String passwrd, String status) {
+        this.idUsuario = idUsuario;
+        this.nombreUsuario = nombreUsuario;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.passwrd = passwrd;
+        this.status = status;
+    }
 
     public Usuario() {
     }
 
-    public Usuario(Integer idUsuario, String nombre, String nombreUsuario, String passwrd) {
-        this.idUsuario = idUsuario;
-        this.nombre = nombre;
-        this.nombreUsuario = nombreUsuario;
-        this.passwrd = passwrd;
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Integer getIdUsuario() {
