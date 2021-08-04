@@ -19,7 +19,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
  @Autowired
  private DataSource datasource;
 
- private static final String OBTENER_USUARIO="SELECT * FROM USUARIOS WHERE nombre_usuario = ? AND passwrd = ?";
+ private static final String OBTENER_USUARIO="SELECT * FROM usuario WHERE nombreUsuario = ? AND passwrd = ?"; //se cambiaron el nombre de la tabla y sus columnas a recuparar, de acuerdo a tu configuracion interna cambiarla acordemente
 
     @Override
     public Usuario validarIngreso(Usuario usuario) throws Exception {
@@ -33,9 +33,9 @@ public class UsuarioDaoImpl implements UsuarioDao {
         @Override
         public Usuario mapRow(ResultSet rs, int i) throws SQLException {
             Usuario usuario = new Usuario();
-            usuario.setIdUsuario(rs.getInt("usuario_id"));
+            usuario.setIdUsuario(rs.getInt("idUsuario")); //se cambio el nombre de la columna, cambiarla de acuerdo a tu configuracion local
             usuario.setNombre(rs.getString("nombre"));
-            usuario.setNombreUsuario(rs.getString("nombre_usuario"));
+            usuario.setNombreUsuario(rs.getString("nombreUsuario"));//se cambio el nombre de la columna, cambiarla de acuerdo a tu configuracion local
             usuario.setPasswrd(rs.getString("passwrd"));
             return usuario;
         }
