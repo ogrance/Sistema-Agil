@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Conexion {
+public class TestConexion {
 
 
     public static void main(String[]args){
@@ -22,7 +22,7 @@ public class Conexion {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestConexion.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         try {
@@ -34,7 +34,7 @@ public class Conexion {
                 System.out.println(rs.getString("nombreUsuario")+" "+rs.getString("passwrd"));
             }while (rs.next());
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestConexion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
