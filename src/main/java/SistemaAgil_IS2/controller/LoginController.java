@@ -33,7 +33,7 @@ public class LoginController {
                 return  mav.addObject("laBienvenida",u.getNombre());
             }else{
                 mav.setViewName("paginaLogin");
-                mav.addObject("registoIncorrecto","El usuario o la contraseña no corresponden");
+                mav.addObject("registoIncorrecto","El usuario y/o la contraseña no corresponden");
 
             }
 
