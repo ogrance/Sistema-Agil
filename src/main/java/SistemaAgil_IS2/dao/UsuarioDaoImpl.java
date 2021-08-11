@@ -20,11 +20,18 @@ public class UsuarioDaoImpl implements UsuarioDao {
  private DataSource datasource;
 
  private static final String OBTENER_USUARIO="SELECT * FROM usuario WHERE nombreUsuario = ? AND passwrd = ?"; //se cambiaron el nombre de la tabla y sus columnas a recuparar, de acuerdo a tu configuracion interna cambiarla acordemente
-
+ private static  final String OBTENER_USUARIOS="SELECT * FROM usuario";
+ private static final String OBTENER_USUARIO_POR_ID="SELECT * FROM usuario WHERE idUsuario=?";
     @Override
     public Usuario validarIngreso(Usuario usuario) throws Exception {
         List<Usuario> user=jdbcTemplate.query(OBTENER_USUARIO, new UsuarioRowMapper(),usuario.getNombreUsuario(),usuario.getPasswrd());
         return user.size()>0?user.get(0):null;
+    }
+
+    @Override
+    public List<Usuario> obtenerUsuarios() throws Exception {
+        List<Usuario> retUsuer=jdbcTemplate.query(OBTENER_USUARIOS, new UsuarioRowMapper());
+        return retUsuer;
     }
 
     private class UsuarioRowMapper implements RowMapper<Usuario>{
@@ -37,6 +44,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
             usuario.setNombre(rs.getString("nombre"));
             usuario.setNombreUsuario(rs.getString("nombreUsuario"));//se cambio el nombre de la columna, cambiarla de acuerdo a tu configuracion local
             usuario.setPasswrd(rs.getString("passwrd"));
+            usuario.setApellido(rs.getString("apellido"));
+            usuario.setStatus(rs.getString("status"));
             return usuario;
         }
     }

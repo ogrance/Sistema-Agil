@@ -20,7 +20,7 @@
 
 <!-- Buttons Start!! -->
 <div class="buttons">
-    <a class="btn seguridad">Seguridad</a>
+    <a class="btn seguridad" href="seguridad/inicio_seguridad">Seguridad</a>
     <a class="btn proyecto">Proyecto</a>
     <a class="btn desarrollo">Desarrollo</a>
     <!--<a class="btn purple">Salir</a>

@@ -76,40 +76,11 @@ h1 {
     background-color: #e74c3c;
 }
 
-/*.purple {
-    color: #9b59b6;
-    border: 2px #9b59b6 solid;
-}
-
-.purple:hover {
-    color: #fff;
-    background-color: #9b59b6;
-}
-
-.orange {
-    color: #e67e22;
-    border: 2px #e67e22 solid;
-}
-
-.orange:hover {
-    color: #fff;
-    background-color: #e67e22;
-}
-
-.yellow {
-    color: #f1c40f;
-    border: 2px #f1c40f solid;
-}
-
-.yellow:hover {
-    color: #fff;
-    background-color: #f1c40f;
-}*/
-
 .buttons {
     padding-top: 30px;
     text-align: center;
 }
+
 
 /* copyright stuffs.. */
 p {

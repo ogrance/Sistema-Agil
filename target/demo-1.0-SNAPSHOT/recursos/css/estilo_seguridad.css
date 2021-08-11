@@ -46,41 +46,71 @@ h1 {
 .btn:hover {
     cursor: url(http://cur.cursors-4u.net/symbols/sym-1/sym46.cur), auto;
 }
-.seguridad {
+/*
+.blue {
     color: #55acee;
     border: 2px #55acee solid;
 }
 
-.seguridad:hover {
+.blue:hover {
     background-color: #55acee;
     color: #fff
 }
 
-.proyecto {
+.green {
     color: #2ecc71;
     border: 2px #2ecc71 solid;
 }
 
-.proyecto:hover {
+.green:hover {
     color: #fff;
     background-color: #2ecc71;
 }
 
-.desarrollo {
+.red {
     color: #e74c3c;
     border: 2px #e74c3c solid;
 }
 
-.desarrollo:hover {
+.red:hover {
     color: #fff;
     background-color: #e74c3c;
+}
+*/
+.purple {
+    color: #9b59b6;
+    border: 2px #9b59b6 solid;
+}
+
+.purple:hover {
+    color: #fff;
+    background-color: #9b59b6;
+}
+
+.orange {
+    color: #e67e22;
+    border: 2px #e67e22 solid;
+}
+
+.orange:hover {
+    color: #fff;
+    background-color: #e67e22;
+}
+
+.yellow {
+    color: #f1c40f;
+    border: 2px #f1c40f solid;
+}
+
+.yellow:hover {
+    color: #fff;
+    background-color: #f1c40f;
 }
 
 .buttons {
     padding-top: 30px;
     text-align: center;
 }
-
 
 /* copyright stuffs.. */
 p {
