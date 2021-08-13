@@ -1,70 +1,75 @@
 package SistemaAgil_IS2.model;
 
-public class Usuario {
-    private Integer idUsuario;
-    private String nombreUsuario;
-    private String nombre;
-    private String apellido;
-    private String passwrd;
-    private String status;
 
-    public Usuario(Integer idUsuario, String nombreUsuario, String nombre, String apellido, String passwrd, String status) {
-        this.idUsuario = idUsuario;
-        this.nombreUsuario = nombreUsuario;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.passwrd = passwrd;
-        this.status = status;
-    }
+public class Usuario {
+    private int idUsuario;
+    private String NombreUsuario;
+    private String Nombre;
+    private String Apellido;
+    private String Passwrd;
+    private String Status;
 
     public Usuario() {
     }
 
-    public String getApellido() {
-        return apellido;
+    
+    public Usuario(int idUsuario, String NombreUsuario, String Nombre, String Apellido, String Passwrd, String Status) {
+        this.idUsuario = idUsuario;
+        this.NombreUsuario = NombreUsuario;
+        this.Nombre = Nombre;
+        this.Apellido = Apellido;
+        this.Passwrd = Passwrd;
+        this.Status = Status;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Integer getIdUsuario() {
+    public int getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(Integer idUsuario) {
+    public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    
 
     public String getNombreUsuario() {
-        return nombreUsuario;
+        return NombreUsuario;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setNombreUsuario(String NombreUsuario) {
+        this.NombreUsuario = NombreUsuario;
+    }
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public String getApellido() {
+        return Apellido;
+    }
+
+    public void setApellido(String Apellido) {
+        this.Apellido = Apellido;
     }
 
     public String getPasswrd() {
-        return passwrd;
+        return Passwrd;
     }
 
-    public void setPasswrd(String passwrd) {
-        this.passwrd = passwrd;
+    public void setPasswrd(String Passwrd) {
+        this.Passwrd = Passwrd;
     }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String Status) {
+        this.Status = Status;
+    }
+    
 }

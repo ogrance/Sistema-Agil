@@ -15,29 +15,30 @@
     <context:component-scan base-package="SistemaAgil_IS2"/>
     <context:annotation-config/>
     <mvc:annotation-driven/>
-<bean id="usuarioService" class="SistemaAgil_IS2.service.UsuarioServiceImpl"/>
-<bean id="usuarioDao" class="SistemaAgil_IS2.dao.UsuarioDaoImpl"/>
-<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-    <property name="dataSource" ref="datasource"/>
-</bean>
-<bean id="datasource"
-      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-    <property name="url" value="jdbc:mysql://localhost:3306/db_ingsofdos?serverTimezone=UTC"/> <!-- Si creaste tu bd con otro nombre, colocar despes de localhost:3306/ el nombre de tu esquema, en mi caso es db_ingsofdos-->
-    <property name="username" value="root"/>
-    <property name="password" value=""/>  <!-- Colocar aqui tu pass del root, si no tiene pass dejar en blanco, si tiene pass cambiar el valor que esta puesto entre las comillas con tu correspondiente pass-->
-</bean>
+    <bean id="usuarioService" class="SistemaAgil_IS2.service.UsuarioServiceImpl"/>
+    <bean id="usuarioDao" class="SistemaAgil_IS2.dao.UsuarioDaoImpl"/>
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="datasource"/>
+    </bean>
+
+    <bean id="datasource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/db_ingsofdos?serverTimezone=UTC"/> <!-- Si creaste tu bd con otro nombre, colocar despes de localhost:3306/ el nombre de tu esquema, en mi caso es db_ingsofdos-->
+        <property name="username" value="root"/>
+        <property name="password" value="454234798"/>  <!-- Colocar aqui tu pass del root, si no tiene pass dejar en blanco, si tiene pass cambiar el valor que esta puesto entre las comillas con tu correspondiente pass-->
+    </bean>
 
 
 
     <!-- Configuracion del view resolver-->
     <bean
-            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/vistas/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
-<!--<mvc:resources mapping="/recursos/" location="/recursos/*"></mvc:resources>-->
+    <!--<mvc:resources mapping="/recursos/" location="/recursos/*"></mvc:resources>-->
 
 
 

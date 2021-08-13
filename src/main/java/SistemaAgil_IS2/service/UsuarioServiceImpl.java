@@ -2,10 +2,9 @@ package SistemaAgil_IS2.service;
 
 import SistemaAgil_IS2.dao.UsuarioDao;
 import SistemaAgil_IS2.model.Usuario;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
@@ -18,20 +17,4 @@ private UsuarioDao usuarioDao;
 
     }
 
-    @Override
-    public List<Usuario> obtenerListaUsuarios() throws Exception {
-        List<Usuario> retorno=usuarioDao.obtenerUsuarios();
-
-        return retorno;
-    }
-
-    @Override
-    public Usuario obtenerUsuarioPorId(Integer id) throws Exception {
-        return usuarioDao.obtenerUsuarioPorId(id);
-    }
-
-    @Override
-    public void insertarUsuario(Usuario usuario) throws Exception {
-        usuarioDao.insertarUsuarioBD(usuario);
-    }
 }
