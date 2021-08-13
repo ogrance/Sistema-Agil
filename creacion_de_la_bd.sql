@@ -6,18 +6,18 @@ CREATE SCHEMA `db_ingsofdos` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci 
 --creacion de las tablas
 CREATE TABLE IF NOT EXISTS usuario
 (
-    idUsuario INT NOT NULL,
+    idUsuario INT NOT NULL AUTO_INCREMENT,
     nombreUsuario VARCHAR(12) NOT NULL UNIQUE,
     nombre VARCHAR(30) NOT NULL,
     apellido VARCHAR(30) NOT NULL,
     passwrd VARCHAR(50) NOT NULL,
-    status CHARACTER(1),
+    status CHARACTER(1) DEFAULT 'e',
     PRIMARY KEY(idUsuario)
 );
 
 CREATE TABLE IF NOT EXISTS permissions
 (
-    id_perm INT NOT NULL,
+    id_perm INT NOT NULL AUTO_INCREMENT,
     perm_name VARCHAR(15) NOT NULL UNIQUE,
     scope VARCHAR(50) NOT NULL,
     PRIMARY KEY(id_perm)
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS permissions
 
 CREATE TABLE IF NOT EXISTS roles
 (
-    id_role INT NOT NULL,
+    id_role INT NOT NULL AUTO_INCREMENT,
     descripcion INT,
     perm_id INT,
     PRIMARY KEY(id_role)
@@ -38,7 +38,7 @@ ALTER TABLE roles
 
 CREATE TABLE IF NOT EXISTS user_role
 (
-    user_id INT NOT NULL,
+    user_id INT NOT NULL AUTO_INCREMENT,
     role_id INT NOT NULL,
     PRIMARY KEY(user_id, role_id)
 );
@@ -55,7 +55,7 @@ ALTER TABLE user_role
 
 CREATE TABLE IF NOT EXISTS UserStories
 (
-    id_us INT NOT NULL,
+    id_us INT NOT NULL AUTO_INCREMENT,
     descripcion VARCHAR(50) NOT NULL,
     estatus CHARACTER(10),
     PRIMARY KEY(id_us)
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS UserStories
 
 CREATE TABLE IF NOT EXISTS sprints
 (
-    id INT NOT NULL,
+    id INT NOT NULL AUTO_INCREMENT,
     duration VARCHAR(10) DEFAULT '2 weeks',
     id_us INT,
     estatus VARCHAR(5) DEFAULT 'TODO',
@@ -77,7 +77,7 @@ ALTER TABLE sprints
 
 CREATE TABLE IF NOT EXISTS projects
 (
-    id INT NOT NULL,
+    id INT NOT NULL AUTO_INCREMENT,
     project_name VARCHAR(30) NOT NULL,
     descripcion VARCHAR(30),
     estatus VARCHAR(10) DEFAULT 'PEN' NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS projects
 
 CREATE TABLE IF NOT EXISTS project_members
 (
-    project_id INT NOT NULL,
+    project_id INT NOT NULL AUTO_INCREMENT,
     user_id INT NOT NULL,
     columna INT,
     PRIMARY KEY(project_id, user_id)
@@ -104,7 +104,7 @@ ALTER TABLE project_members
 
 CREATE TABLE IF NOT EXISTS backlogs
 (
-    id_backlog INT NOT NULL,
+    id_backlog INT NOT NULL AUTO_INCREMENT,
     project_id INT NOT NULL,
     us_id INT,
     nombre VARCHAR(15),

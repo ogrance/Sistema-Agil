@@ -22,6 +22,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
  private static final String OBTENER_USUARIO="SELECT * FROM usuario WHERE nombreUsuario = ? AND passwrd = ?"; //se cambiaron el nombre de la tabla y sus columnas a recuparar, de acuerdo a tu configuracion interna cambiarla acordemente
  private static  final String OBTENER_USUARIOS="SELECT * FROM usuario";
  private static final String OBTENER_USUARIO_POR_ID="SELECT * FROM usuario WHERE idUsuario=?";
+ private static final String INSERTAR_USUARIO="INSERT INTO usuario (nombreUsuario,nombre,apellido,passwrd) VALUES (?,?,?,?)";
     @Override
     public Usuario validarIngreso(Usuario usuario) throws Exception {
         List<Usuario> user=jdbcTemplate.query(OBTENER_USUARIO, new UsuarioRowMapper(),usuario.getNombreUsuario(),usuario.getPasswrd());
@@ -32,6 +33,17 @@ public class UsuarioDaoImpl implements UsuarioDao {
     public List<Usuario> obtenerUsuarios() throws Exception {
         List<Usuario> retUsuer=jdbcTemplate.query(OBTENER_USUARIOS, new UsuarioRowMapper());
         return retUsuer;
+    }
+
+    @Override
+    public Usuario obtenerUsuarioPorId(Integer id) throws Exception {
+        Usuario usuario=jdbcTemplate.queryForObject(OBTENER_USUARIO_POR_ID, new UsuarioRowMapper(),id);
+        return usuario;
+    }
+
+    @Override
+    public void insertarUsuarioBD(Usuario usuario) throws Exception {
+        jdbcTemplate.update(INSERTAR_USUARIO, new Object[]{usuario.getNombreUsuario(),usuario.getNombre(),usuario.getApellido(),usuario.getPasswrd()});
     }
 
     private class UsuarioRowMapper implements RowMapper<Usuario>{

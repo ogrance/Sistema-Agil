@@ -24,4 +24,14 @@ private UsuarioDao usuarioDao;
 
         return retorno;
     }
+
+    @Override
+    public Usuario obtenerUsuarioPorId(Integer id) throws Exception {
+        return usuarioDao.obtenerUsuarioPorId(id);
+    }
+
+    @Override
+    public void insertarUsuario(Usuario usuario) throws Exception {
+        usuarioDao.insertarUsuarioBD(usuario);
+    }
 }

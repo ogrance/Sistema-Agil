@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -39,8 +38,23 @@ private UsuarioService usuarioService;
         return mav;
     }
     @RequestMapping(value = "/agregar_usuario",method = RequestMethod.GET)
-    public ModelAndView muestraFormularioAgregar(){
+    public ModelAndView muestraFormularioAgregar()  {
         ModelAndView mav=new ModelAndView("formularioAgregarUsuario");
+        mav.addObject("usuario", new Usuario());
+        return mav;
+    }
+
+    @PostMapping(value = "/inserta_usuario")
+    public String insertaUsuarioBD(@ModelAttribute("usuario")Usuario user) throws Exception {
+        usuarioService.insertarUsuario(user);
+        return "redirect:/seguridad/usuarios";
+    }
+    @GetMapping("/formulario-actualizar-usuario")
+    public ModelAndView muestraFormularioActualizar(@RequestParam("idUsuario") Integer idUsuario) throws Exception {
+        ModelAndView mav=new ModelAndView();
+        Usuario usu=usuarioService.obtenerUsuarioPorId(idUsuario);
+        mav.addObject("usuario",usu);
+        mav.setViewName("formularioAgregarUsuario");
         return mav;
     }
 

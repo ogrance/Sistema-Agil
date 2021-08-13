@@ -21,16 +21,21 @@
         <th>Nombre</th>
         <th>Apellido</th>
         <th>Estado</th>
+        <th>Modificar</th>
     </tr>
     </thead>
     <tbody>
     <c:forEach var="usuarioCont" items="${listaUsuarios}">
+        <c:url var="linkModificar" value="formulario-actualizar-usuario">
+            <c:param name="idUsuario" value="${usuarioCont.idUsuario}"/>
+        </c:url>
         <tr>
             <td>${usuarioCont.idUsuario}</td>
             <td>${usuarioCont.nombreUsuario}</td>
             <td>${usuarioCont.nombre}</td>
             <td>${usuarioCont.apellido}</td>
             <td>${usuarioCont.status}</td>
+            <td><a href="${linkModificar}"><input type="button" value="Modificar"/></a></td>
         </tr>
 
     </c:forEach>
