@@ -1,7 +1,10 @@
 package SistemaAgil_IS2.dao;
 
 
+import SistemaAgil_IS2.model.Roles;
+import SistemaAgil_IS2.model.RolesDetalle;
 import SistemaAgil_IS2.model.Usuario;
+import SistemaAgil_IS2.model.UsuarioRol;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -23,6 +26,12 @@ public class UsuarioDaoImpl implements UsuarioDao {
  private static  final String OBTENER_USUARIOS="SELECT * FROM usuario";
  private static final String OBTENER_USUARIO_POR_ID="SELECT * FROM usuario WHERE idUsuario=?";
  private static final String INSERTAR_USUARIO="INSERT INTO usuario (nombreUsuario,nombre,apellido,passwrd) VALUES (?,?,?,?)";
+ private static final String ACTUALIZAR_USUARIO="UPDATE usuario SET nombreUsuario=?,nombre=?,apellido=?,passwrd=? WHERE idUsuario=?";
+ private static final String OBTENER_ROLES="SELECT * FROM roles";
+ private static final String ASIGNAR_ROLES="INSERT INTO user_role (user_id,role_id) VALUES (?,?)";
+ private static final String OBTENER_USUARIO_Y_ROL="SELECT * FROM user_role";
+ private static final String OBTENER_LISTA_ROLES_POR_USUARIO="SELECT u.nombreUsuario, u.nombre,u.apellido,r.descripcion FROM usuario u JOIN user_role ur ON u.idUsuario=ur.user_id " +
+                                                             "JOIN roles r ON ur.role_id=r.id_role WHERE u.idUsuario=?";
     @Override
     public Usuario validarIngreso(Usuario usuario) throws Exception {
         List<Usuario> user=jdbcTemplate.query(OBTENER_USUARIO, new UsuarioRowMapper(),usuario.getNombreUsuario(),usuario.getPasswrd());
@@ -43,7 +52,32 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
     @Override
     public void insertarUsuarioBD(Usuario usuario) throws Exception {
-        jdbcTemplate.update(INSERTAR_USUARIO, new Object[]{usuario.getNombreUsuario(),usuario.getNombre(),usuario.getApellido(),usuario.getPasswrd()});
+        if(usuario.getIdUsuario()==null){
+            jdbcTemplate.update(INSERTAR_USUARIO, new Object[]{usuario.getNombreUsuario(),usuario.getNombre(),usuario.getApellido(),usuario.getPasswrd()});
+        }else{
+            actualizarUsuario(usuario);
+        }
+
+    }
+    @Override
+    public  void actualizarUsuario(Usuario usuario) throws Exception{
+        jdbcTemplate.update(ACTUALIZAR_USUARIO, new Object[]{usuario.getNombreUsuario(),usuario.getNombre(),usuario.getApellido(),usuario.getPasswrd(),usuario.getIdUsuario()});
+    }
+
+    @Override
+    public List<Roles> obtenerRolesDao() throws Exception {
+        return jdbcTemplate.query(OBTENER_ROLES, new RolesRowMapper());
+    }
+
+    @Override
+    public void insertaRolesAsignados(Integer usuarioID, Integer idRole ) throws Exception {
+        jdbcTemplate.update(ASIGNAR_ROLES, new Object[]{usuarioID,idRole});
+    }
+
+    @Override
+    public List<RolesDetalle> obtenerUsuarioYRol(Integer idUsuario) throws Exception {
+
+        return jdbcTemplate.query(OBTENER_LISTA_ROLES_POR_USUARIO, new UsuarioRolRowMapper(),idUsuario);
     }
 
     private class UsuarioRowMapper implements RowMapper<Usuario>{
@@ -59,6 +93,32 @@ public class UsuarioDaoImpl implements UsuarioDao {
             usuario.setApellido(rs.getString("apellido"));
             usuario.setStatus(rs.getString("status"));
             return usuario;
+        }
+    }
+    private class RolesRowMapper implements RowMapper<Roles>{
+
+        @Override
+        public Roles mapRow(ResultSet rs, int i) throws SQLException {
+            Roles rol =new Roles();
+            rol.setIdRole(rs.getInt("id_role"));
+            rol.setDescripcion(rs.getString("descripcion"));
+            return rol;
+        }
+    }
+    private class UsuarioRolRowMapper implements RowMapper<RolesDetalle>{
+
+        @Override
+        public RolesDetalle mapRow(ResultSet rs, int i) throws SQLException {
+            RolesDetalle usuarioRol=new RolesDetalle();
+            Usuario usuario=new Usuario();
+            usuario.setNombreUsuario(rs.getString(1));
+            usuario.setNombre(rs.getString(2));
+            usuario.setApellido(rs.getString(3));
+            Roles roles=new Roles();
+            roles.setDescripcion(rs.getString(4));
+            usuarioRol.setUser(usuario);
+            usuarioRol.setRoles(roles);
+            return usuarioRol;
         }
     }
 

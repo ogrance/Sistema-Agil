@@ -67,4 +67,16 @@ public class Usuario {
     public void setPasswrd(String passwrd) {
         this.passwrd = passwrd;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "idUsuario=" + idUsuario +
+                ", nombreUsuario='" + nombreUsuario + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", passwrd='" + passwrd + '\'' +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }

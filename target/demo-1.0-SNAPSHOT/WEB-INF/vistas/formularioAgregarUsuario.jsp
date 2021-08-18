@@ -18,6 +18,7 @@
     <div class="title">Crear Usuario</div>
     <div class="subtitle">Vamos a crear al usuario!</div>
     <div class="input-container ic1">
+        <form:hidden path="idUsuario"/>
         <form:input path="nombre" id="firstname" class="input" type="text" placeholder=" " />
         <div class="cut"></div>
         <form:label path="nombre" for="firstname" class="placeholder">Nombre</form:label>

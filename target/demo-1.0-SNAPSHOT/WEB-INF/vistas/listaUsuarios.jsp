@@ -22,11 +22,19 @@
         <th>Apellido</th>
         <th>Estado</th>
         <th>Modificar</th>
-    </tr>
+        <th>Eliminar</th>
+        <th>Roles</th>
+         </tr>
     </thead>
     <tbody>
     <c:forEach var="usuarioCont" items="${listaUsuarios}">
         <c:url var="linkModificar" value="formulario-actualizar-usuario">
+            <c:param name="idUsuario" value="${usuarioCont.idUsuario}"/>
+        </c:url>
+        <c:url var="linkEliminar" value="formulario-eliminar-usuario">
+            <c:param name="idUsuario" value="${usuarioCont.idUsuario}"/>
+        </c:url>
+        <c:url var="linkAsignarRol" value="formulario-asignar-rol">
             <c:param name="idUsuario" value="${usuarioCont.idUsuario}"/>
         </c:url>
         <tr>
@@ -36,6 +44,8 @@
             <td>${usuarioCont.apellido}</td>
             <td>${usuarioCont.status}</td>
             <td><a href="${linkModificar}"><input type="button" value="Modificar"/></a></td>
+            <td><a href="${linkEliminar}"><input type="button" value="Eliminar"/></a></td>
+            <td><a href="${linkAsignarRol}" ><input type="button" value="Asignar Rol"></a></td>
         </tr>
 
     </c:forEach>
