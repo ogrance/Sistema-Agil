@@ -14,8 +14,11 @@ public interface UsuarioDao {
     public Usuario obtenerUsuarioPorId(Integer id) throws Exception;
     public void insertarUsuarioBD (Usuario usuario) throws Exception;
     public  void actualizarUsuario(Usuario usuario) throws Exception;
+    public void eliminarUsuario(Integer usuarioId) throws  Exception;
     public List<Roles> obtenerRolesDao() throws Exception;
     public void insertaRolesAsignados(Integer usuarioID, Integer idRole) throws Exception;
     public List<RolesDetalle> obtenerUsuarioYRol(Integer idUsuario) throws Exception;
+    public void eliminarAsignacionRol(UsuarioRol usuarioRol) throws Exception;
+
 
 }

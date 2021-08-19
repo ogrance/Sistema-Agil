@@ -22,18 +22,23 @@
         <th>Nombre</th>
         <th>Apellido</th>
         <th>Tipo Rol</th>
+        <th>Borrar</th>
 
 
     </tr>
     </thead>
     <tbody>
     <c:forEach var="rolesCont" items="${rolesDetalles}">
-
+        <c:url var="linkBorrarRol" value="formulario-eliminar-rol">
+            <c:param name="idRole" value="${rolesCont.roles.idRole}"/>
+            <c:param name="idUsuario" value="${rolesCont.user.idUsuario}"/>
+        </c:url>
         <tr>
             <td>${rolesCont.user.nombreUsuario}</td>
             <td>${rolesCont.user.nombre}</td>
             <td>${rolesCont.user.apellido}</td>
             <td>${rolesCont.roles.descripcion}</td>
+            <td><a href="${linkBorrarRol}" ><input type="button" value="Eliminar Rol" onclick="if (!(confirm('Vas a eliminar un registro. Estas seguro?')))return false"></a></td>
         </tr>
 
     </c:forEach>
@@ -41,8 +46,9 @@
 
 </table>
 <br/>
-<button type="button" name="Asignar Rol" onclick="history.back()">Asignar Rol</button>
+<button type="button" name="Asignar Rol" onclick="window.location.href='asignar-rol';return false;">Asignar Rol</button>
 <br/><br/>
 <p style="color: red;padding-top:400px">${ErrorKeyDuplicada}</p>
+<p style="color: red;padding-top:400px">${ErrorDelete}</p>
 </body>
 </html>

@@ -14,7 +14,9 @@ public interface UsuarioService {
     public List<Usuario> obtenerListaUsuarios() throws Exception;
     public Usuario obtenerUsuarioPorId(Integer id) throws Exception;
     public void insertarUsuario(Usuario usuario) throws Exception;
+    public void eliminarUsuario(Integer idUsuario) throws Exception;
     public List<Roles> obtenerRoles() throws Exception;
     public void asignarRol(Integer usuarioID, Integer idRole) throws Exception;
     public List<RolesDetalle> obtenerUsuarioYRol(Integer idUsuario) throws Exception;
+    public void eliminarUsuarioRol(UsuarioRol usuarioRol) throws Exception;
 }

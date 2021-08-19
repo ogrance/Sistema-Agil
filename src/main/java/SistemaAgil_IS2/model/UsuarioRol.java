@@ -4,6 +4,14 @@ public class UsuarioRol {
     private Integer usuarioId;
     private Integer roleId;
 
+    public UsuarioRol(Integer usuarioId, Integer roleId) {
+        this.usuarioId = usuarioId;
+        this.roleId = roleId;
+    }
+
+    public UsuarioRol() {
+    }
+
     public Integer getUsuarioId() {
         return usuarioId;
     }

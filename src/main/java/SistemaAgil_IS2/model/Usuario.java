@@ -1,5 +1,7 @@
 package SistemaAgil_IS2.model;
 
+import java.util.List;
+
 public class Usuario {
     private Integer idUsuario;
     private String nombreUsuario;
@@ -7,6 +9,7 @@ public class Usuario {
     private String apellido;
     private String passwrd;
     private String status;
+
 
     public Usuario(Integer idUsuario, String nombreUsuario, String nombre, String apellido, String passwrd, String status) {
         this.idUsuario = idUsuario;
@@ -67,6 +70,8 @@ public class Usuario {
     public void setPasswrd(String passwrd) {
         this.passwrd = passwrd;
     }
+
+
 
     @Override
     public String toString() {

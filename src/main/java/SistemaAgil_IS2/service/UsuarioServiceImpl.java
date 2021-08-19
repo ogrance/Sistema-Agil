@@ -40,6 +40,11 @@ private UsuarioDao usuarioDao;
     }
 
     @Override
+    public void eliminarUsuario(Integer idUsuario) throws Exception {
+        usuarioDao.eliminarUsuario(idUsuario);
+    }
+
+    @Override
     public List<Roles> obtenerRoles() throws Exception {
        List<Roles> ret=usuarioDao.obtenerRolesDao();
         System.out.println("En Servicios "+ Arrays.asList(ret));
@@ -54,6 +59,11 @@ private UsuarioDao usuarioDao;
     @Override
     public List<RolesDetalle> obtenerUsuarioYRol(Integer idUsuario) throws Exception {
         return usuarioDao.obtenerUsuarioYRol(idUsuario);
+    }
+
+    @Override
+    public void eliminarUsuarioRol(UsuarioRol usuarioRol) throws Exception {
+        usuarioDao.eliminarAsignacionRol(usuarioRol);
     }
 
 }

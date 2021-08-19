@@ -13,10 +13,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 @Controller
@@ -64,12 +61,19 @@ private UsuarioService usuarioService;
         mav.setViewName("formularioAgregarUsuario");
         return mav;
     }
+    @GetMapping("/formulario-eliminar-usuario")
+    public String muestraFormularioEliminar(@RequestParam("idUsuario") Integer idUsuario) throws Exception {
+        ModelAndView mav=new ModelAndView();
+        System.out.println("Recibimos para eliminar ID= "+idUsuario);
+        usuarioService.eliminarUsuario(idUsuario);
+        return "redirect:/seguridad/usuarios";
+    }
     @GetMapping("/formulario-asignar-rol")
     public ModelAndView muestraFormularioAsignarRoles(@RequestParam("idUsuario") Integer idUsuario) throws Exception{
         ModelAndView mav=new ModelAndView("formularioAsignarRoles");
         Usuario user= usuarioService.obtenerUsuarioPorId(idUsuario);
         List<Roles> rol= usuarioService.obtenerRoles();
-       // Set <Roles> set =new HashSet<Roles>(rol);
+
 
         RolesDetalle detalle= new RolesDetalle(rol, user,new Roles());
         System.out.println(Arrays.asList(rol));
@@ -92,6 +96,23 @@ private UsuarioService usuarioService;
         return mav;
         //return "redirect:/seguridad/roles-usuarios";
     }
+    @GetMapping("/formulario-eliminar-rol")
+    public String  muestraFormularioEliminarRol(@RequestParam("idRole") Integer idRole,@RequestParam("idUsuario")Integer idUsuario, Model modelo) throws Exception {
+       // ModelAndView mav=new ModelAndView();
+        UsuarioRol usuarioRol=new UsuarioRol(idUsuario,idRole);
+        try{
+            usuarioService.eliminarUsuarioRol(usuarioRol);
+            List<RolesDetalle> rolesDetalles=usuarioService.obtenerUsuarioYRol(idUsuario);
+            modelo.addAttribute("rolesDetalles",rolesDetalles);
+        }catch (Exception e){
+            modelo.addAttribute("ErrorDelete", "No se pudo eliminar el rol del usuario"+" "+e.getMessage());
+            return "vistaRoles";
+        }
+
+
+        return "vistaRoles";
+    }
+
     /*@RequestMapping(value = "/roles-usuarios",method = RequestMethod.GET)
     public ModelAndView muestraRolesDeUsuarios() {
         ModelAndView mav = new ModelAndView("vistaRoles");
@@ -104,5 +125,6 @@ private UsuarioService usuarioService;
         }
         return mav;
     }*/
+
 
 }

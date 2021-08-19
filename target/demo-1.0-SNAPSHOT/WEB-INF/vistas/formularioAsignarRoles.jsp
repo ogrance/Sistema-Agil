@@ -12,7 +12,7 @@
 <head>
     <title>Asignar Roles</title>
 </head>
-<a>
+
 <h1>Asignar Rol al usuario: &nbsp${listaRolesDetalle.user.nombre}&nbsp ${listaRolesDetalle.user.apellido}</h1>
 <form:form action="formulario-asignar-rol" modelAttribute="listaRolesDetalle" method="post">
 
@@ -35,15 +35,24 @@
 
     <tr>
 
-        <td><a href="${linkAsignar}"> <input class="check-box" type="checkbox" /></a></td>
+        <td><a href="${linkAsignar}"> <input class="radio-button" type="radio" /></a></td>
         <td><form:label path="lista">${rolesCont.descripcion}</form:label> </td>
     </tr>
         <br/>
+
+
 
     </c:forEach>
     </tbody>
 
     </table>
+
+
+
+
+
+
+
 </form:form>
 
 

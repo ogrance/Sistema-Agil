@@ -44,7 +44,7 @@
             <td>${usuarioCont.apellido}</td>
             <td>${usuarioCont.status}</td>
             <td><a href="${linkModificar}"><input type="button" value="Modificar"/></a></td>
-            <td><a href="${linkEliminar}"><input type="button" value="Eliminar"/></a></td>
+            <td><a href="${linkEliminar}"><input type="button" value="Eliminar"onclick="if (!(confirm('Vas a eliminar este registro. Estas Seguro? ')))return false"/></a></td>
             <td><a href="${linkAsignarRol}" ><input type="button" value="Asignar Rol"></a></td>
         </tr>
 

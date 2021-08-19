@@ -30,8 +30,10 @@ public class UsuarioDaoImpl implements UsuarioDao {
  private static final String OBTENER_ROLES="SELECT * FROM roles";
  private static final String ASIGNAR_ROLES="INSERT INTO user_role (user_id,role_id) VALUES (?,?)";
  private static final String OBTENER_USUARIO_Y_ROL="SELECT * FROM user_role";
- private static final String OBTENER_LISTA_ROLES_POR_USUARIO="SELECT u.nombreUsuario, u.nombre,u.apellido,r.descripcion FROM usuario u JOIN user_role ur ON u.idUsuario=ur.user_id " +
+ private static final String OBTENER_LISTA_ROLES_POR_USUARIO="SELECT u.nombreUsuario, u.nombre,u.apellido,u.idUsuario,r.id_role,r.descripcion FROM usuario u JOIN user_role ur ON u.idUsuario=ur.user_id " +
                                                              "JOIN roles r ON ur.role_id=r.id_role WHERE u.idUsuario=?";
+ private static final String ELIMINAR_USUARIO_ROL="DELETE FROM user_role WHERE user_id=? and role_id=?";
+ private static final String ELIMINAR_USUARIO="DELETE FROM usuario WHERE idUsuario=?";
     @Override
     public Usuario validarIngreso(Usuario usuario) throws Exception {
         List<Usuario> user=jdbcTemplate.query(OBTENER_USUARIO, new UsuarioRowMapper(),usuario.getNombreUsuario(),usuario.getPasswrd());
@@ -65,6 +67,11 @@ public class UsuarioDaoImpl implements UsuarioDao {
     }
 
     @Override
+    public void eliminarUsuario(Integer usuarioId) throws Exception {
+        jdbcTemplate.update(ELIMINAR_USUARIO, new Object[]{usuarioId});
+    }
+
+    @Override
     public List<Roles> obtenerRolesDao() throws Exception {
         return jdbcTemplate.query(OBTENER_ROLES, new RolesRowMapper());
     }
@@ -78,6 +85,11 @@ public class UsuarioDaoImpl implements UsuarioDao {
     public List<RolesDetalle> obtenerUsuarioYRol(Integer idUsuario) throws Exception {
 
         return jdbcTemplate.query(OBTENER_LISTA_ROLES_POR_USUARIO, new UsuarioRolRowMapper(),idUsuario);
+    }
+
+    @Override
+    public void eliminarAsignacionRol(UsuarioRol usuarioRol) throws Exception {
+        jdbcTemplate.update(ELIMINAR_USUARIO_ROL, new Object[]{usuarioRol.getUsuarioId(),usuarioRol.getRoleId()});
     }
 
     private class UsuarioRowMapper implements RowMapper<Usuario>{
@@ -114,8 +126,10 @@ public class UsuarioDaoImpl implements UsuarioDao {
             usuario.setNombreUsuario(rs.getString(1));
             usuario.setNombre(rs.getString(2));
             usuario.setApellido(rs.getString(3));
+            usuario.setIdUsuario(rs.getInt(4));
             Roles roles=new Roles();
-            roles.setDescripcion(rs.getString(4));
+            roles.setIdRole(rs.getInt(5));
+            roles.setDescripcion(rs.getString(6));
             usuarioRol.setUser(usuario);
             usuarioRol.setRoles(roles);
             return usuarioRol;
