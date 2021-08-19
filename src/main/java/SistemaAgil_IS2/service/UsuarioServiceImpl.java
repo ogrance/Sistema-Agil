@@ -1,10 +1,7 @@
 package SistemaAgil_IS2.service;
 
 import SistemaAgil_IS2.dao.UsuarioDao;
-import SistemaAgil_IS2.model.Roles;
-import SistemaAgil_IS2.model.RolesDetalle;
-import SistemaAgil_IS2.model.Usuario;
-import SistemaAgil_IS2.model.UsuarioRol;
+import SistemaAgil_IS2.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,7 +44,6 @@ private UsuarioDao usuarioDao;
     @Override
     public List<Roles> obtenerRoles() throws Exception {
        List<Roles> ret=usuarioDao.obtenerRolesDao();
-        System.out.println("En Servicios "+ Arrays.asList(ret));
         return ret;
     }
 
@@ -64,6 +60,41 @@ private UsuarioDao usuarioDao;
     @Override
     public void eliminarUsuarioRol(UsuarioRol usuarioRol) throws Exception {
         usuarioDao.eliminarAsignacionRol(usuarioRol);
+    }
+
+    @Override
+    public void insertarRol(Roles roles) throws Exception {
+        usuarioDao.insertarRol(roles);
+    }
+
+    @Override
+    public void eliminarRol(Integer idRol) throws Exception {
+        usuarioDao.eliminarRol(idRol);
+    }
+
+    @Override
+    public void actualizarRol(Roles roles) throws Exception {
+        usuarioDao.actualizarRol(roles);
+    }
+
+    @Override
+    public void insertarPermiso(Permisos permiso) throws Exception {
+        usuarioDao.insertarPermiso(permiso);
+    }
+
+    @Override
+    public void eliminarPermiso(Integer idPermiso) throws Exception {
+        usuarioDao.eliminarPermiso(idPermiso);
+    }
+
+    @Override
+    public void actualizarPermiso(Permisos permiso) throws Exception {
+        usuarioDao.actualizarPermiso(permiso);
+    }
+
+    @Override
+    public Roles obtenerRolPorId(Integer idRol) throws Exception {
+       return usuarioDao.obtenerRolPorId(idRol);
     }
 
 }

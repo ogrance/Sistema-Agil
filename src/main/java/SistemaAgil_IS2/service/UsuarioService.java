@@ -1,10 +1,7 @@
 package SistemaAgil_IS2.service;
 
 
-import SistemaAgil_IS2.model.Roles;
-import SistemaAgil_IS2.model.RolesDetalle;
-import SistemaAgil_IS2.model.Usuario;
-import SistemaAgil_IS2.model.UsuarioRol;
+import SistemaAgil_IS2.model.*;
 
 import java.util.List;
 
@@ -19,4 +16,11 @@ public interface UsuarioService {
     public void asignarRol(Integer usuarioID, Integer idRole) throws Exception;
     public List<RolesDetalle> obtenerUsuarioYRol(Integer idUsuario) throws Exception;
     public void eliminarUsuarioRol(UsuarioRol usuarioRol) throws Exception;
+    public void insertarRol(Roles roles) throws Exception;
+    public void eliminarRol(Integer idRol) throws Exception;
+    public void actualizarRol(Roles roles) throws Exception;
+    public void insertarPermiso(Permisos permiso) throws Exception;
+    public void eliminarPermiso(Integer idPermiso) throws Exception;
+    public void actualizarPermiso(Permisos permiso) throws Exception;
+    public Roles obtenerRolPorId(Integer idRol) throws Exception;
 }

@@ -29,7 +29,7 @@
     </thead>
     <tbody>
     <c:forEach var="rolesCont" items="${rolesDetalles}">
-        <c:url var="linkBorrarRol" value="formulario-eliminar-rol">
+        <c:url var="linkBorrarRol" value="formulario-eliminar-rol-usuario">
             <c:param name="idRole" value="${rolesCont.roles.idRole}"/>
             <c:param name="idUsuario" value="${rolesCont.user.idUsuario}"/>
         </c:url>
@@ -46,7 +46,7 @@
 
 </table>
 <br/>
-<button type="button" name="Asignar Rol" onclick="window.location.href='asignar-rol';return false;">Asignar Rol</button>
+<button type="button" name="Asignar Rol" onclick="window.location.href='usuarios';return false;">Volver</button>
 <br/><br/>
 <p style="color: red;padding-top:400px">${ErrorKeyDuplicada}</p>
 <p style="color: red;padding-top:400px">${ErrorDelete}</p>

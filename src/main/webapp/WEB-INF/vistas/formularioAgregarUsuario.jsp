@@ -16,7 +16,7 @@
 <form:form action="inserta_usuario" modelAttribute="usuario" method="post">
 <div class="form">
     <div class="title">Crear Usuario</div>
-    <div class="subtitle">Vamos a crear al usuario!</div>
+    <div class="subtitle">Digite los datos solicitados</div>
     <div class="input-container ic1">
         <form:hidden path="idUsuario"/>
         <form:input path="nombre" id="firstname" class="input" type="text" placeholder=" " />

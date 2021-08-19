@@ -1,10 +1,7 @@
 package SistemaAgil_IS2.dao;
 
 
-import SistemaAgil_IS2.model.Roles;
-import SistemaAgil_IS2.model.RolesDetalle;
-import SistemaAgil_IS2.model.Usuario;
-import SistemaAgil_IS2.model.UsuarioRol;
+import SistemaAgil_IS2.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -34,6 +31,13 @@ public class UsuarioDaoImpl implements UsuarioDao {
                                                              "JOIN roles r ON ur.role_id=r.id_role WHERE u.idUsuario=?";
  private static final String ELIMINAR_USUARIO_ROL="DELETE FROM user_role WHERE user_id=? and role_id=?";
  private static final String ELIMINAR_USUARIO="DELETE FROM usuario WHERE idUsuario=?";
+ private static final String OBTENER_ROL_POR_ID="SELECT * FROM roles where id_role=?";
+ private static final String INSERTAR_ROL="INSERT INTO roles (descripcion) VALUES (?)";
+ private static final String ELIMINAR_ROL="DELETE FROM roles WHERE id_role=?";
+ private static final String ACTUALIZAR_ROL="UPDATE roles SET descripcion=? WHERE id_role=?";
+ private static final String INSERTAR_PERMISO="INSERT INTO permissions (perm_name,scope) VALUES (?,?)";
+ private static final String ELIMINAR_PERMISO="DELETE FROM permissions WHERE id_role=?";
+ private static final String ACTUALIZAR_PERMISO="UPDATE permissions SET perm_name=?,scope=? WHERE idUsuario=?";
     @Override
     public Usuario validarIngreso(Usuario usuario) throws Exception {
         List<Usuario> user=jdbcTemplate.query(OBTENER_USUARIO, new UsuarioRowMapper(),usuario.getNombreUsuario(),usuario.getPasswrd());
@@ -90,6 +94,46 @@ public class UsuarioDaoImpl implements UsuarioDao {
     @Override
     public void eliminarAsignacionRol(UsuarioRol usuarioRol) throws Exception {
         jdbcTemplate.update(ELIMINAR_USUARIO_ROL, new Object[]{usuarioRol.getUsuarioId(),usuarioRol.getRoleId()});
+    }
+
+    @Override
+    public Roles obtenerRolPorId(Integer idRol) throws Exception {
+        return jdbcTemplate.queryForObject(OBTENER_ROL_POR_ID, new RolesRowMapper(),idRol);
+    }
+
+    @Override
+    public void insertarRol(Roles roles) throws Exception {
+
+        if(roles.getIdRole()==null){
+            jdbcTemplate.update(INSERTAR_ROL, new Object[]{roles.getDescripcion()});
+        }else{
+            actualizarRol(roles);
+        }
+    }
+
+    @Override
+    public void eliminarRol(Integer idRol) throws Exception {
+        jdbcTemplate.update(ELIMINAR_ROL, new Object[]{idRol});
+    }
+
+    @Override
+    public void actualizarRol(Roles roles) throws Exception {
+        jdbcTemplate.update(ACTUALIZAR_ROL, new Object[]{roles.getDescripcion(),roles.getIdRole()});
+    }
+
+    @Override
+    public void insertarPermiso(Permisos permiso) throws Exception {
+
+    }
+
+    @Override
+    public void eliminarPermiso(Integer idPermiso) throws Exception {
+
+    }
+
+    @Override
+    public void actualizarPermiso(Permisos permiso) throws Exception {
+
     }
 
     private class UsuarioRowMapper implements RowMapper<Usuario>{

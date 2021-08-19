@@ -96,7 +96,7 @@ private UsuarioService usuarioService;
         return mav;
         //return "redirect:/seguridad/roles-usuarios";
     }
-    @GetMapping("/formulario-eliminar-rol")
+    @GetMapping("/formulario-eliminar-rol-usuario")
     public String  muestraFormularioEliminarRol(@RequestParam("idRole") Integer idRole,@RequestParam("idUsuario")Integer idUsuario, Model modelo) throws Exception {
        // ModelAndView mav=new ModelAndView();
         UsuarioRol usuarioRol=new UsuarioRol(idUsuario,idRole);
@@ -113,18 +113,48 @@ private UsuarioService usuarioService;
         return "vistaRoles";
     }
 
-    /*@RequestMapping(value = "/roles-usuarios",method = RequestMethod.GET)
-    public ModelAndView muestraRolesDeUsuarios() {
-        ModelAndView mav = new ModelAndView("vistaRoles");
+    @RequestMapping(value = "/roles",method = RequestMethod.GET)
+    public ModelAndView muestraRoles() {
+        ModelAndView mav = new ModelAndView("listaRoles");
 
         try {
-            List<RolesDetalle> rolesDetalles = usuarioService.obtenerUsuarioYRol(3);
-            mav.addObject("rolesDetalles",rolesDetalles);
+            List<Roles> listaRoles = usuarioService.obtenerRoles();
+            mav.addObject("listaRoles",listaRoles);
         } catch (Exception e){
             e.printStackTrace();
         }
         return mav;
-    }*/
+    }
+    @RequestMapping(value = "/agregar-rol",method = RequestMethod.GET)
+    public ModelAndView muestraFormularioAgregarRol()  {
+        ModelAndView mav=new ModelAndView("formularioAgregarRol");
+        mav.addObject("roles", new Roles());
+        return mav;
+    }
+    @PostMapping(value = "/inserta-rol")
+    public String insertaRolBD(@ModelAttribute("roles")Roles rol) throws Exception {
+        usuarioService.insertarRol(rol);
+        return "redirect:/seguridad/roles";
+    }
+    @GetMapping("/formulario-actualizar-rol")
+    public ModelAndView muestraFormularioActualizarRol(@RequestParam("idRole") Integer idRol) throws Exception {
+        ModelAndView mav=new ModelAndView();
+        Roles roles=usuarioService.obtenerRolPorId(idRol);
+        mav.addObject("roles",roles);
+        mav.setViewName("formularioAgregarRol");
+        return mav;
+    }
+    @GetMapping("/formulario-eliminar-rol")
+    public String muestraFormularioEliminarRoles(@RequestParam("idRole") Integer idRol) throws Exception {
+        ModelAndView mav=new ModelAndView();
+        System.out.println("Recibimos para eliminar ID= "+idRol);
+        try{
+            usuarioService.eliminarRol(idRol);
+        }catch (Exception e){
+            mav.addObject("ErrorEliminarRol", "No se pudo eliminar el Rol ");
+        }
 
+        return "redirect:/seguridad/roles";
+    }
 
 }
