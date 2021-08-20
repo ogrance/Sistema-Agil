@@ -36,8 +36,14 @@ public class UsuarioDaoImpl implements UsuarioDao {
  private static final String ELIMINAR_ROL="DELETE FROM roles WHERE id_role=?";
  private static final String ACTUALIZAR_ROL="UPDATE roles SET descripcion=? WHERE id_role=?";
  private static final String INSERTAR_PERMISO="INSERT INTO permissions (perm_name,scope) VALUES (?,?)";
- private static final String ELIMINAR_PERMISO="DELETE FROM permissions WHERE id_role=?";
- private static final String ACTUALIZAR_PERMISO="UPDATE permissions SET perm_name=?,scope=? WHERE idUsuario=?";
+ private static final String ELIMINAR_PERMISO="DELETE FROM permissions WHERE id_perm=?";
+ private static final String ACTUALIZAR_PERMISO="UPDATE permissions SET perm_name=?,scope=? WHERE id_perm=?";
+ private static final String OBTENER_PERMISOS="SELECT * FROM permissions";
+ private static final String OBTENER_PERMISOS_POR_ID="SELECT * FROM permissions WHERE id_perm=?";
+ private static final String ASIGNAR_PERMISOS="INSERT INTO roles_permission (id_role,perm_id) VALUES (?,?)";
+ private static final String OBTENER_LISTA_PERMISOS_ROLES="SELECT p.perm_name,p.scope,p.id_perm,r.id_role,r.descripcion FROM permissions p " +
+                            "JOIN roles_permission rp ON p.id_perm=rp.perm_id JOIN roles r ON r.id_role=rp.id_role WHERE p.id_perm=?";
+    private static final String ELIMINAR_PERMISO_ROL="DELETE FROM roles_permission WHERE id_role=? and perm_id=?";
     @Override
     public Usuario validarIngreso(Usuario usuario) throws Exception {
         List<Usuario> user=jdbcTemplate.query(OBTENER_USUARIO, new UsuarioRowMapper(),usuario.getNombreUsuario(),usuario.getPasswrd());
@@ -123,18 +129,48 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
     @Override
     public void insertarPermiso(Permisos permiso) throws Exception {
+        if(permiso.getIdPermiso()==null){
+            jdbcTemplate.update(INSERTAR_PERMISO, new Object[]{permiso.getNombrePermiso(),permiso.getAlcance()});
+        }else{
+            actualizarPermiso(permiso);
+        }
 
     }
 
     @Override
     public void eliminarPermiso(Integer idPermiso) throws Exception {
-
+        jdbcTemplate.update(ELIMINAR_PERMISO, new Object[]{idPermiso});
     }
 
     @Override
     public void actualizarPermiso(Permisos permiso) throws Exception {
-
+        jdbcTemplate.update(ACTUALIZAR_PERMISO, new Object[]{permiso.getNombrePermiso(),permiso.getAlcance(),permiso.getIdPermiso()});
     }
+
+    @Override
+    public List<Permisos> obtenerPermisos() throws Exception {
+        return jdbcTemplate.query(OBTENER_PERMISOS, new PermisosRowMapper());
+    }
+
+    @Override
+    public Permisos obtenerPermisoPorId(Integer idPermiso) throws Exception {
+        return jdbcTemplate.queryForObject(OBTENER_PERMISOS_POR_ID, new PermisosRowMapper(),idPermiso);
+    }
+    @Override
+    public void insertaPermisosAsignados(Integer idRole, Integer idPermiso ) throws Exception {
+        jdbcTemplate.update(ASIGNAR_PERMISOS, new Object[]{idRole,idPermiso});
+    }
+
+    @Override
+    public List<PermisosDetalle> obtenerListaPermisosAsignados(Integer idPermiso) throws Exception {
+        return jdbcTemplate.query(OBTENER_LISTA_PERMISOS_ROLES,new PermisosAsignadosRowMapper(),idPermiso);
+    }
+
+    @Override
+    public void eliminarAsignacionPermiso(Integer idRole, Integer idPermiso) throws Exception {
+        jdbcTemplate.update(ELIMINAR_PERMISO_ROL, new Object[]{idRole,idPermiso});
+    }
+
 
     private class UsuarioRowMapper implements RowMapper<Usuario>{
 
@@ -177,6 +213,34 @@ public class UsuarioDaoImpl implements UsuarioDao {
             usuarioRol.setUser(usuario);
             usuarioRol.setRoles(roles);
             return usuarioRol;
+        }
+    }
+    private class PermisosRowMapper implements RowMapper<Permisos>{
+
+        @Override
+        public Permisos mapRow(ResultSet rs, int i) throws SQLException {
+            Permisos permiso=new Permisos();
+            permiso.setIdPermiso(rs.getInt("id_perm"));
+            permiso.setNombrePermiso(rs.getString("perm_name"));
+            permiso.setAlcance(rs.getString("scope"));
+            return permiso;
+        }
+    }
+    private class PermisosAsignadosRowMapper implements RowMapper<PermisosDetalle>{
+
+        @Override
+        public PermisosDetalle mapRow(ResultSet rs, int i) throws SQLException {
+            PermisosDetalle pd=new PermisosDetalle();
+            Roles r=new Roles();
+            Permisos p=new Permisos();
+            p.setNombrePermiso(rs.getString(1));
+            p.setAlcance(rs.getString(2));
+            p.setIdPermiso(rs.getInt(3));
+            r.setIdRole(rs.getInt(4));
+            r.setDescripcion(rs.getString(5));
+            pd.setPermiso(p);
+            pd.setRoles(r);
+            return pd;
         }
     }
 

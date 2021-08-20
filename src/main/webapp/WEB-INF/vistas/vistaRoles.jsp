@@ -47,6 +47,7 @@
 </table>
 <br/>
 <button type="button" name="Asignar Rol" onclick="window.location.href='usuarios';return false;">Volver</button>
+<input class="btn" type="button" value="Inicio" onclick="window.location.href='inicio_seguridad';return false;"/>
 <br/><br/>
 <p style="color: red;padding-top:400px">${ErrorKeyDuplicada}</p>
 <p style="color: red;padding-top:400px">${ErrorDelete}</p>

@@ -48,5 +48,6 @@
 </table>
 <br/>
 <input class="btn" type="button" value="Agregar Usuario" onclick="window.location.href='agregar_usuario';return false;"/>
+<input class="btn" type="button" value="Inicio" onclick="window.location.href='inicio_seguridad';return false;"/>
 </body>
 </html>

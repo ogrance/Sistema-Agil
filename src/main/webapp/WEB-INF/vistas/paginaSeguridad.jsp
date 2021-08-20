@@ -22,7 +22,7 @@
 <div class="buttons">
     <a class="btn purple" href="usuarios">Usuarios</a>
     <a class="btn orange" href="roles">Roles</a>
-    <a class="btn yellow">Permisos</a>
+    <a class="btn yellow" href="permisos">Permisos</a>
 </div>
 
 

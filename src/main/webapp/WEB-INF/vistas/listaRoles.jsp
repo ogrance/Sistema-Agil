@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Usuarios</title>
+    <title>Roles</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/recursos/css/estilo_lista_usuarios.css">
 </head>
 <body>
@@ -30,8 +30,8 @@
             <td>${rolCont.idRole}</td>
             <td>${rolCont.descripcion}</td>
 
-            <td><a href="${linkModificar}"><input type="button" value="Modificar"/></a></td>
-            <td><a href="${linkEliminar}"><input type="button" value="Eliminar"onclick="if (!(confirm('Vas a eliminar este registro. Estas Seguro? ')))return false"/></a></td>
+            <td colspan="1" style="text-align:center;"><a href="${linkModificar}"><input type="button" value="Modificar"/></a></td>
+            <td colspan="1" style="text-align:center;"><a href="${linkEliminar}"><input type="button" value="Eliminar"onclick="if (!(confirm('Vas a eliminar este registro. Estas Seguro? ')))return false"/></a></td>
 
         </tr>
 
@@ -41,6 +41,7 @@
 </table>
 <br/>
 <input class="btn" type="button" value="Agregar Rol" onclick="window.location.href='agregar-rol';return false;"/>
+<input class="btn" type="button" value="Inicio" onclick="window.location.href='inicio_seguridad';return false;"/>
 <br/>
 <p>${ErrorEliminarRol}</p>
 </body>

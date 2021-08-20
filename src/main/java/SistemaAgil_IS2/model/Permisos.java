@@ -1,9 +1,9 @@
 package SistemaAgil_IS2.model;
 
 public class Permisos {
-    public Integer idPermiso;
-    public String nombrePermiso;
-    public  String alcance;
+    private Integer idPermiso;
+    private String nombrePermiso;
+    private  String alcance;
 
     public Permisos() {
     }

@@ -23,4 +23,9 @@ public interface UsuarioDao {
     public void insertarPermiso(Permisos permiso) throws Exception;
     public void eliminarPermiso(Integer idPermiso) throws Exception;
     public void actualizarPermiso(Permisos permiso) throws Exception;
+    public List<Permisos> obtenerPermisos()throws Exception;
+    public Permisos obtenerPermisoPorId(Integer idPermiso) throws Exception;
+    public void insertaPermisosAsignados(Integer idRole, Integer idPermiso ) throws Exception;
+    public List<PermisosDetalle> obtenerListaPermisosAsignados(Integer idPermiso) throws Exception;
+    public void eliminarAsignacionPermiso(Integer idRole, Integer idPermiso) throws Exception;
 }

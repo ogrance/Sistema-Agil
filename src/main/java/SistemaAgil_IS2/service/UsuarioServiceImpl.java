@@ -97,4 +97,29 @@ private UsuarioDao usuarioDao;
        return usuarioDao.obtenerRolPorId(idRol);
     }
 
+    @Override
+    public List<Permisos> obtenerPermisos() throws Exception {
+        return usuarioDao.obtenerPermisos();
+    }
+
+    @Override
+    public Permisos obtenerPermisoPorId(Integer idPermiso) throws Exception {
+        return usuarioDao.obtenerPermisoPorId(idPermiso);
+    }
+
+    @Override
+    public void insertaPermisosAsignados(Integer idRole, Integer idPermiso) throws Exception {
+        usuarioDao.insertaPermisosAsignados(idRole, idPermiso);
+    }
+
+    @Override
+    public List<PermisosDetalle> obtenerListaPermisosAsignados(Integer idPermiso) throws Exception {
+        return usuarioDao.obtenerListaPermisosAsignados(idPermiso);
+    }
+
+    @Override
+    public void eliminarAsignacionPermiso(Integer idRole, Integer idPermiso) throws Exception {
+        usuarioDao.eliminarAsignacionPermiso(idRole,idPermiso);
+    }
+
 }

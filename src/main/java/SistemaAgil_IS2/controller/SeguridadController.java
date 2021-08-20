@@ -1,10 +1,8 @@
 package SistemaAgil_IS2.controller;
 
-import SistemaAgil_IS2.model.Roles;
-import SistemaAgil_IS2.model.RolesDetalle;
-import SistemaAgil_IS2.model.Usuario;
-import SistemaAgil_IS2.model.UsuarioRol;
+import SistemaAgil_IS2.model.*;
 import SistemaAgil_IS2.service.UsuarioService;
+import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
@@ -156,5 +154,101 @@ private UsuarioService usuarioService;
 
         return "redirect:/seguridad/roles";
     }
+    @RequestMapping(value = "/permisos",method = RequestMethod.GET)
+    public ModelAndView muestraPermisos() {
+        ModelAndView mav = new ModelAndView("listaPermisos");
+
+        try {
+            List<Permisos> listaPermisos = usuarioService.obtenerPermisos();
+            mav.addObject("listaPermisos",listaPermisos);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return mav;
+    }
+    @RequestMapping(value = "/agregar-permiso",method = RequestMethod.GET)
+    public ModelAndView muestraFormularioAgregarPermiso()  {
+        ModelAndView mav=new ModelAndView("formularioAgregarPermiso");
+        mav.addObject("permisos", new Permisos());
+        return mav;
+    }
+    @PostMapping(value = "/inserta-permiso")
+    public String insertaPermisoBD(@ModelAttribute("permisos")Permisos permiso) throws Exception {
+
+        try{
+            usuarioService.insertarPermiso(permiso);
+        }catch (MysqlDataTruncation e){
+            e.printStackTrace();
+
+
+        }
+
+        return "redirect:/seguridad/permisos";
+    }
+    @GetMapping("/formulario-actualizar-permiso")
+    public ModelAndView muestraFormularioActualizarPermiso(@RequestParam("idPermiso") Integer idPermiso) throws Exception {
+        ModelAndView mav=new ModelAndView();
+        Permisos permiso=usuarioService.obtenerPermisoPorId(idPermiso);
+        mav.addObject("permisos",permiso);
+        mav.setViewName("formularioAgregarPermiso");
+        return mav;
+    }
+    @GetMapping("/formulario-eliminar-permiso")
+    public String muestraFormularioEliminarPermisos(@RequestParam("idPermiso") Integer idPermiso) throws Exception {
+        ModelAndView mav=new ModelAndView();
+        System.out.println("Recibimos para eliminar ID= "+idPermiso);
+        try{
+            usuarioService.eliminarPermiso(idPermiso);
+        }catch (Exception e){
+            mav.addObject("ErrorEliminarPermiso", "No se pudo eliminar el Permiso ");
+        }
+
+        return "redirect:/seguridad/permisos";
+    }
+    @GetMapping("/formulario-asignar-rol-permiso")
+    public ModelAndView muestraFormularioAsignarRolesPermisos(@RequestParam("idPermiso") Integer idPermiso) throws Exception {
+        ModelAndView mav = new ModelAndView("formularioAsignarRolesPermisos");
+        Permisos permiso = usuarioService.obtenerPermisoPorId(idPermiso);
+        List<Roles> rol = usuarioService.obtenerRoles();
+
+
+        PermisosDetalle detalle = new PermisosDetalle(rol, permiso, new Roles());
+        System.out.println(Arrays.asList(permiso));
+        mav.addObject("listaPermisosDetalle", detalle);
+        return mav;
+    }
+    @RequestMapping(value = "/asignar-rol-permiso",method = RequestMethod.GET)
+    public ModelAndView  asignarRolPermisoBD(@RequestParam("idRole") Integer roleId,@RequestParam("idPermiso") Integer idPermiso) throws Exception {
+        ModelAndView mav = new ModelAndView("vistaPermisos");
+        System.out.println("Recibimos de Front"+"Id Role: "+roleId+" "+"Id Permiso: "+idPermiso);
+        try{
+            usuarioService.insertaPermisosAsignados(roleId, idPermiso);
+        }catch(DuplicateKeyException e){
+
+            mav.addObject("ErrorKeyDuplicada", "Se esta intentando asignar un permiso que ya pertenecia al Rol");
+        }
+
+        List<PermisosDetalle> permisoDetalles = usuarioService.obtenerListaPermisosAsignados(idPermiso);
+        mav.addObject("permisoDetalles",permisoDetalles);
+        return mav;
+        //return "redirect:/seguridad/roles-usuarios";
+    }
+    @GetMapping("/formulario-eliminar-rol-permiso")
+    public String  muestraFormularioEliminarRolPermiso(@RequestParam("idRole") Integer idRole,@RequestParam("idPermiso")Integer idPermiso, Model modelo) throws Exception {
+        // ModelAndView mav=new ModelAndView();
+
+        try{
+            usuarioService.eliminarAsignacionPermiso(idRole, idPermiso);
+            List<PermisosDetalle> permisosDetalles=usuarioService.obtenerListaPermisosAsignados(idPermiso);
+            modelo.addAttribute("permisoDetalles",permisosDetalles);
+        }catch (Exception e){
+            modelo.addAttribute("ErrorDelete", "No se pudo eliminar el permiso del rol"+" "+e.getMessage());
+            return "vistaRoles";
+        }
+
+
+        return "vistaPermisos";
+    }
+
 
 }
