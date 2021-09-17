@@ -8,23 +8,23 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Pagina Bienvenida</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/recursos/css/estilo_seguridad.css">
-</head>
-<body>
-<p>Modulo ${modulo}</p>
+    <head>
+        <title>Pagina Bienvenida</title>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/recursos/css/estilo_seguridad.css">
+    </head>
+    <body>
+        <p>Modulo ${modulo}</p>
 
-<!-- Title -->
-<h1>${modulo}</h1>
+        <!-- Title -->
+        <h1>${modulo}</h1>
 
-<!-- Buttons Start!! -->
-<div class="buttons">
-    <a class="btn purple" href="usuarios">Usuarios</a>
-    <a class="btn orange" href="roles">Roles</a>
-    <a class="btn yellow" href="permisos">Permisos</a>
-</div>
+        <!-- Buttons Start!! -->
+        <div class="buttons">
+            <a class="btn purple" href="usuarios">Usuarios</a>
+            <a class="btn orange" href="roles">Roles</a>
+            <a class="btn yellow" href="permisos">Permisos</a>
+        </div>
 
 
-</body>
+    </body>
 </html>
