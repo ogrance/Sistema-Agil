@@ -27,6 +27,10 @@ public class ProyectoController extends HttpServlet {
     String addusertoproyectconf = "WEB-INF/vistas/procesarAdicion.jsp";
     String paginaError = "WEB-INF/vistas/accionErronea.jsp";
     String listarProjectMembers = "WEB-INF/vistas/listarProjectMembers.jsp";
+    String paginaDesarrollo = "WEB-INF/vistas/paginaDesarrollo.jsp";
+    String exitoAgregarProyecto = "WEB-INF/redirectsIgnorar/exitoAgregarProyecto.jsp";
+    String errorProjectMember = "WEB-INF/redirectsIgnorar/errorProjectMember.jsp";
+    String exitoProjectMember = "WEB-INF/redirectsIgnorar/exitoProjectMember.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -61,6 +65,12 @@ public class ProyectoController extends HttpServlet {
             acceso = paginaBienvenida;
         } else if (action.equalsIgnoreCase("Proyecto")) {
             acceso = paginaproyecto;
+        } else if (action.equalsIgnoreCase("Desarrollo")){
+            acceso = paginaDesarrollo;
+        } else if (action.equalsIgnoreCase("RedirectListarProyectos")){
+            acceso = listarproyecto;
+        } else if (action.equalsIgnoreCase("RedirectAgregarProjectMembers")){
+            acceso = seleccionarProyecto;
         }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
@@ -72,8 +82,10 @@ public class ProyectoController extends HttpServlet {
             throws ServletException, IOException {
         String acceso = "";
         String action = request.getParameter("accion");
-        if (action.equalsIgnoreCase("Proyecto") || action.equalsIgnoreCase("Volver a Proyecto")) {
+        if (action.equalsIgnoreCase("Proyecto")) {
             acceso = paginaproyecto;
+        } else if (action.equalsIgnoreCase("Volver a la Home")){
+            acceso = paginaBienvenida;
         } else if (action.equalsIgnoreCase("ABM de Proyectos")) {
             acceso = listarproyecto;
         } else if (action.equalsIgnoreCase("Crear Proyecto")) {
@@ -86,7 +98,7 @@ public class ProyectoController extends HttpServlet {
             p.setDescription(descp);
             p.setStatus(estap);
             dao.add(p);
-            acceso = exito;
+            acceso = exitoAgregarProyecto; //tocar aqui
         } else if (action.equalsIgnoreCase("Actualizar")) {
             id = Integer.parseInt(request.getParameter("txtid"));
             String uname = request.getParameter("projectname");
@@ -109,12 +121,14 @@ public class ProyectoController extends HttpServlet {
             pm.setId_user(usuId);
             String resultado = dao.add(pm);
             if (resultado.equalsIgnoreCase("errorexp")) {
-                acceso = paginaError;
+                acceso = errorProjectMember;
             } else {
-                acceso = exito;
+                acceso = exitoProjectMember;
             }
         } else if (action.equalsIgnoreCase("Ver Project Members")){
             acceso = listarProjectMembers;
+        } else if (action.equalsIgnoreCase("Desarrollo")){
+            acceso = paginaDesarrollo;
         }
 
         RequestDispatcher vista = request.getRequestDispatcher(acceso);

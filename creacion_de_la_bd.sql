@@ -68,7 +68,7 @@ ALTER TABLE roles_permission
 	ON DELETE CASCADE
 ;
 
-CREATE TABLE IF NOT EXISTS UserStories
+CREATE TABLE IF NOT EXISTS user_stories
 (
     id_us INT NOT NULL AUTO_INCREMENT,
     descripcion VARCHAR(50) NOT NULL,
@@ -76,6 +76,8 @@ CREATE TABLE IF NOT EXISTS UserStories
     PRIMARY KEY(id_us)
 );
 
+--Aun no utilizado(puede cambiar su declaracion de acuerdo a un futuro analisis
+/*
 CREATE TABLE IF NOT EXISTS sprints
 (
     id INT NOT NULL AUTO_INCREMENT,
@@ -85,11 +87,11 @@ CREATE TABLE IF NOT EXISTS sprints
     PRIMARY KEY(id)
 );
 
-ALTER TABLE sprints
+ ALTER TABLE sprints
     ADD    FOREIGN KEY (id_us)
     REFERENCES UserStories(id_us)
 	ON DELETE CASCADE
-;
+; */
 
 CREATE TABLE IF NOT EXISTS projects
 (
@@ -104,7 +106,6 @@ CREATE TABLE IF NOT EXISTS project_members
 (
     project_id INT NOT NULL,
     user_id INT NOT NULL,
-    columna INT,
     PRIMARY KEY(project_id, user_id)
 );
 
@@ -123,24 +124,38 @@ ALTER TABLE project_members
 CREATE TABLE IF NOT EXISTS backlogs
 (
     id_backlog INT NOT NULL AUTO_INCREMENT,
-    project_id INT NOT NULL,
-    us_id INT,
     nombre VARCHAR(15),
-    commentario VARCHAR(30),
-    PRIMARY KEY(id_backlog, project_id)
+    comentario VARCHAR(30),
+    PRIMARY KEY(id_backlog)
 );
 
-ALTER TABLE backlogs
-    ADD    FOREIGN KEY (project_id)
-    REFERENCES projects(id)
-	ON DELETE CASCADE
-;
+CREATE TABLE IF NOT EXISTS project_backlogs
+(
+	project_id INT NOT NULL UNIQUE,
+	backlog_id INT NOT NULL UNIQUE,
+	PRIMARY KEY(project_id,backlog_id)
+);
 
-ALTER TABLE backlogs
-    ADD    FOREIGN KEY (us_id)
-    REFERENCES UserStories(id_us)
-	ON DELETE CASCADE
-;
+ALTER TABLE project_backlogs
+	ADD FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE;
+
+ALTER TABLE project_backlogs
+	ADD FOREIGN KEY (backlog_id) REFERENCES backlogs(id_backlog) ON DELETE CASCADE;
+
+CREATE TABLE IF NOT EXISTS US_backlog
+(
+	backlog_id INT NOT NULL,
+	US_id INT NOT NULL UNIQUE,
+	PRIMARY KEY(backlog_id, US_id)
+);
+
+ALTER TABLE US_backlog
+	ADD FOREIGN KEY (backlog_id) REFERENCES backlogs(id_backlog) ON DELETE CASCADE;
+
+ALTER TABLE US_backlog
+	ADD FOREIGN KEY (US_id) REFERENCES user_stories(id_us);
+
+
 
 --insercion de usuarios
 INSERT INTO `db_ingsofdos`.`usuario` (`idUsuario`, `nombreUsuario`, `nombre`, `apellido`, `passwrd`, `status`) VALUES ('1', 'Victor', 'Victor', 'Basaldua', '123', 'e');
@@ -156,33 +171,3 @@ INSERT INTO `db_ingsofdos`.`usuario` (`idUsuario`, `nombreUsuario`, `nombre`, `a
 INSERT INTO `db_ingsofdos`.`usuario` (`idUsuario`, `nombreUsuario`, `nombre`, `apellido`, `passwrd`, `status`) VALUES ('6', 'Lili', 'Lili', 'Demattei', '456', 'e');
 
 INSERT INTO `db_ingsofdos`.`usuario` (`idUsuario`, `nombreUsuario`, `nombre`, `apellido`, `passwrd`, `status`) VALUES ('7', 'Sebastian', 'Sebastian', 'Fernandez', '456', 'e');
-
---TRIGGERS
-/* POR AHORA NO ES NECESARIO ejecutar estos scripts!!
-
-
---controla el borrado de las filas en la tabla user_role en caso de que un rol o un usuario se borre
-CREATE TRIGGER t_b_d_usuario
-AFTER DELETE ON usuario
-FOR EACH ROW
-DELETE FROM user_role WHERE user_id=OLD.idUsuario;
-
-CREATE TRIGGER t_b_d_role
-AFTER DELETE ON roles
-FOR EACH ROW
-DELETE FROM user_role WHERE role_id=OLD.id_role;
-
---controla el borrado de las filas en la tabla roles_permission en caso de que un rol o un usuario se borre
-CREATE TRIGGER t_b_d_role_perm
-AFTER DELETE ON roles
-FOR EACH ROW
-DELETE FROM roles_permission WHERE role_id=OLD.id_role;
-
-
-CREATE TRIGGER t_b_d_perm_role
-AFTER DELETE ON permissions
-FOR EACH ROW
-DELETE FROM roles_permission WHERE perm_id=OLD.id_perm;
-*/
-
-

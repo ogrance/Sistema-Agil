@@ -28,7 +28,7 @@
 
                 <a class="btn seguridad" href="seguridad/inicio_seguridad">Seguridad</a>
                 <input class="btn proyecto" type="submit" name="accion" value="Proyecto"/>
-                <a class="btn desarrollo">Desarrollo</a>
+                <input class="btn desarrollo" type="submit" name="accion" value="Desarrollo"/>
 
             </form>
 

@@ -10,11 +10,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
         <title>Accion exitosa!</title>
+        <meta http-equiv="refresh" content="3;url=http://localhost:8080/demo/DesarrolloController?accion=ABM de User Stories">
     </head>
     <body>
         <h1>Accion Exitosa!</h1>
         <form action="ProyectoController" method="POST">
-            <input type="submit" name="accion" value="Volver a Proyecto"><br>
+            <input type="submit" name="accion" value="Volver a la Home"><br>
         </form>
     </body>
 </html>
