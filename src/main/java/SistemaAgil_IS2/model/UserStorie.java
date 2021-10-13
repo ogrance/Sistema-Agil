@@ -8,16 +8,26 @@ public class UserStorie {
     private Integer project_id;
     private String descripcion;
     private String estatus;
+    private Integer sprint_id;
 
     public UserStorie() {
     }
 
-    public UserStorie(Integer id_us, Integer backlog_id, Integer project_id, String descripcion) {
+    public UserStorie(Integer id_us, Integer backlog_id, Integer project_id, String descripcion, String estatus, Integer sprint_id) {
         this.id_us = id_us;
         this.backlog_id = backlog_id;
         this.project_id = project_id;
         this.descripcion = descripcion;
         this.estatus = estatus;
+        this.sprint_id = sprint_id;
+    }
+    
+    public Integer getSprint_id() {
+        return sprint_id;
+    }
+
+    public void setSprint_id(Integer sprint_id) {
+        this.sprint_id = sprint_id;
     }
 
     public String getEstatus() {
