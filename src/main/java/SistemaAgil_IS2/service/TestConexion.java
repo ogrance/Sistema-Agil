@@ -7,8 +7,8 @@ public class TestConexion {
 
     Connection con;
     String user = "root";
-    String pass = "454234798";
-    String url = "jdbc:mysql://localhost:3306/db_ingsofdos";
+    String pass = "";
+    String url = "jdbc:mysql://localhost:3306/db_ingsofdos?serverTimezone=UTC";
 
     public TestConexion() {
         try {
