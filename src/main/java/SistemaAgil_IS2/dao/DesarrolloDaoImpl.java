@@ -5,6 +5,12 @@ import SistemaAgil_IS2.model.Backlog;
 import SistemaAgil_IS2.model.Sprint;
 import SistemaAgil_IS2.model.UserStorie;
 import SistemaAgil_IS2.service.TestConexion;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,8 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-
+@Repository
 public class DesarrolloDaoImpl implements DesarrolloDao{
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private DataSource datasource;
     
     TestConexion cn = new TestConexion();
     Connection con;
@@ -23,6 +33,10 @@ public class DesarrolloDaoImpl implements DesarrolloDao{
     UserStorie ustorie = new UserStorie();
     Backlog backl = new Backlog();
     Sprint sprt = new Sprint();
+
+    private static final String OBTENER_SPRINTS_DISPONIBLES="select s.id_sprint, s.project_id,p.project_name ,s.name,s.duration,s.estatus from db_ingsofdos.sprints s " +
+                                                    "join db_ingsofdos.projects p on s.project_id =p.id where s.estatus = 'TO-DO'";
+    private static final String ACTUALIZAR_ESTADO_SPRINT_INICIO="update db_ingsofdos.sprints set estatus='DOING' where id_sprint=?";
 
 //SECCION USER STORIES *SECCION USER STORIES *SECCION USER STORIES *SECCION USER STORIES *SECCION USER STORIES *    
     @Override
@@ -103,11 +117,31 @@ public class DesarrolloDaoImpl implements DesarrolloDao{
         return false;
     }
 
-    
-    
-    
-    
-    
+    @Override
+    public List<Sprint> mostrarSprintsDisponibles() throws Exception {
+        return jdbcTemplate.query(OBTENER_SPRINTS_DISPONIBLES, new SprintRowMapper());
+    }
+
+    @Override
+    public void actualizarSprintInicio(Integer sprintId) throws Exception {
+        jdbcTemplate.update(ACTUALIZAR_ESTADO_SPRINT_INICIO, sprintId);
+    }
+
+    private class SprintRowMapper implements RowMapper<Sprint>{
+
+            @Override
+            public Sprint mapRow(ResultSet rs, int i) throws SQLException {
+                Sprint sprint= new Sprint();
+                sprint.setId_sprint(rs.getInt(1));
+                sprint.setProject_id(rs.getInt(2));
+                sprint.setNombreProyecto(rs.getString(3));
+                sprint.setName(rs.getString(4));
+                sprint.setDuration(rs.getString(5));
+                sprint.setEstatus(rs.getString(6));
+                return sprint;
+            }
+        }
+
 //SECCION BACKLOGS * SECCION BACKLOGS *SECCION BACKLOGS *SECCION BACKLOGS *SECCION BACKLOGS *SECCION BACKLOGS *
     
     

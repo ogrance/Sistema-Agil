@@ -7,6 +7,7 @@ public class Sprint {
     private String name;
     private String duration;
     private String estatus;
+    private String nombreProyecto;
 
     public Sprint() {
     }
@@ -58,6 +59,12 @@ public class Sprint {
     public void setEstatus(String estatus) {
         this.estatus = estatus;
     }
-    
-    
+
+    public String getNombreProyecto() {
+        return nombreProyecto;
+    }
+
+    public void setNombreProyecto(String nombreProyecto) {
+        this.nombreProyecto = nombreProyecto;
+    }
 }

@@ -23,5 +23,6 @@
                 <input class="btn yellow" type="submit" name="accion" value="AM de Sprints"/>
                 <br>
                 <input class="btn orange" type="submit" name="accion" value="Agregar US a Sprints"/>
+                <a class="btn yellow" href="gestion-sprints">Gestion de Sprints</a>
             </form>
         </div>

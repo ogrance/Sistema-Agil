@@ -28,4 +28,6 @@ public interface DesarrolloDao {
     public Boolean updateSprintUS(UserStorie us);
     
     public Boolean eliminar(int id);
+    List<Sprint> mostrarSprintsDisponibles() throws Exception;
+    void actualizarSprintInicio(Integer sprintId) throws Exception;
 }
