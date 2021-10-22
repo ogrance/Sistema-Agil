@@ -11,8 +11,9 @@
     <thead>
     <tr>
         <th>Id del Sprint</th>
-        <th>Id del Proyecto</th>
         <th>Nombre del Sprint</th>
+        <th>Id del Proyecto</th>
+        <th>Nombre del Proyecto</th>
         <th>Duracion del Sprint</th>
         <th>Estado del Sprint</th>
         <th>Iniciar</th>
@@ -21,13 +22,22 @@
     </thead>
     <tbody>
     <c:forEach var="sprintCont" items="${listaSprintsDisponibles}">
-
+        <c:url var="linkIniciar" value="actualizar-user-stories">
+            <c:param name="project_id" value="${sprintCont.project_id}"/>
+            <c:param name="id_sprint" value="${sprintCont.id_sprint}"/>
+        </c:url>
+        <c:url var="linkFinalizar" value="finalizar-sprint">
+            <c:param name="idUsuario" value="${sprintCont.id_sprint}"/>
+        </c:url>
         <tr>
             <td>${sprintCont.id_sprint}</td>
-            <td>${sprintCont.project_id}</td>
             <td>${sprintCont.name}</td>
+            <td>${sprintCont.project_id}</td>
+            <td>${sprintCont.nombreProyecto}</td>
             <td>${sprintCont.duration}</td>
             <td>${sprintCont.estatus}</td>
+            <td><a href="${linkIniciar}"><input type="button" value="Iniciar"/></a></td>
+            <td><a href="${linkFinalizar}"><input type="button" value="Finalizar"onclick="if (!(confirm('Vas a finalizar este sprint. Estas Seguro? ')))return false"/></a></td>
         </tr>
 
     </c:forEach>
@@ -35,7 +45,7 @@
 
 </table>
 <br/>
-<input class="btn" type="button" value="Agregar Usuario" onclick="window.location.href='agregar_usuario';return false;"/>
-<input class="btn" type="button" value="Inicio" onclick="window.location.href='inicio_seguridad';return false;"/>
+
+<input class="btn" type="button" value="Inicio" onclick="window.location.href='ProyectoController';return false;"/>
 </body>
 </html>

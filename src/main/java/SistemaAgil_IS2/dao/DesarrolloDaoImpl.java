@@ -37,6 +37,9 @@ public class DesarrolloDaoImpl implements DesarrolloDao{
     private static final String OBTENER_SPRINTS_DISPONIBLES="select s.id_sprint, s.project_id,p.project_name ,s.name,s.duration,s.estatus from db_ingsofdos.sprints s " +
                                                     "join db_ingsofdos.projects p on s.project_id =p.id where s.estatus = 'TO-DO'";
     private static final String ACTUALIZAR_ESTADO_SPRINT_INICIO="update db_ingsofdos.sprints set estatus='DOING' where id_sprint=?";
+    private static final String OBTENER_USER_STORIES_POR_ESTADOS="select t1.id_us,t1.descripcion,t1.estatus,t1.project_id,t2.project_name from user_stories t1 join projects t2 on t1.project_id=t2.id \n" +
+                                                                "join sprints t3 on t2.id=t3.project_id where t3.project_id =? and t3.id_sprint=?";
+    private static  final String ACTUALIZAR_ESTADO_US= "UPDATE user_stories set estatus=? where id_us =?";
 
 //SECCION USER STORIES *SECCION USER STORIES *SECCION USER STORIES *SECCION USER STORIES *SECCION USER STORIES *    
     @Override
@@ -87,6 +90,7 @@ public class DesarrolloDaoImpl implements DesarrolloDao{
             ps = con.prepareStatement(sql);
             ps.executeUpdate();
         } catch (Exception e) {
+            e.printStackTrace();
             return true;
         }
         return false;
@@ -125,6 +129,37 @@ public class DesarrolloDaoImpl implements DesarrolloDao{
     @Override
     public void actualizarSprintInicio(Integer sprintId) throws Exception {
         jdbcTemplate.update(ACTUALIZAR_ESTADO_SPRINT_INICIO, sprintId);
+    }
+
+    @Override
+    public List<UserStorie> obtenerUserStoriesPorProyecto(Integer idProyecto, Integer idSprint) throws Exception {
+        return jdbcTemplate.query(OBTENER_USER_STORIES_POR_ESTADOS,new Object[]{idProyecto,idSprint},new UserStorieRowMapper());
+    }
+
+    @Override
+    public void actualizarEstadoUS(String estado, Integer idUs) throws Exception {
+        jdbcTemplate.update(ACTUALIZAR_ESTADO_US,estado,idUs);
+    }
+
+    private class UserStorieRowMapper implements RowMapper<UserStorie>{
+
+        @Override
+        public UserStorie mapRow(ResultSet rs, int i) throws SQLException {
+
+            try {
+                UserStorie us = new UserStorie();
+                us.setId_us(rs.getInt(1));
+                us.setDescripcion(rs.getString(2));
+                us.setEstatus(rs.getString(3));
+                us.setProject_id(rs.getInt(4));
+                us.setNombreProyecto(rs.getString(5));
+                return us;
+            }catch (SQLException s){
+                s.printStackTrace();
+                return null;
+            }
+
+        }
     }
 
     private class SprintRowMapper implements RowMapper<Sprint>{

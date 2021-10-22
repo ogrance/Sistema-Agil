@@ -2,6 +2,8 @@
 package SistemaAgil_IS2.model;
 
 
+import java.util.ArrayList;
+
 public class UserStorie {
     private Integer id_us;
     private Integer backlog_id;
@@ -9,6 +11,7 @@ public class UserStorie {
     private String descripcion;
     private String estatus;
     private Integer sprint_id;
+    private String nombreProyecto;
 
     public UserStorie() {
     }
@@ -70,7 +73,11 @@ public class UserStorie {
         this.descripcion = descripcion;
     }
 
-   
-    
-    
+    public String getNombreProyecto() {
+        return nombreProyecto;
+    }
+
+    public void setNombreProyecto(String nombreProyecto) {
+        this.nombreProyecto = nombreProyecto;
+    }
 }

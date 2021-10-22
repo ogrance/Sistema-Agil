@@ -65,6 +65,7 @@ public class ProjectDaoImpl implements ProjectDao {
             ps = con.prepareStatement(sql);
             ps.executeUpdate();
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }
