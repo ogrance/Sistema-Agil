@@ -7,7 +7,7 @@ public class TestConexion {
 
     Connection con;
     String user = "root";
-    String pass = "root";
+    String pass = "";
     String url = "jdbc:mysql://localhost:3306/db_ingsofdos?serverTimezone=UTC";
 
     public TestConexion() {
