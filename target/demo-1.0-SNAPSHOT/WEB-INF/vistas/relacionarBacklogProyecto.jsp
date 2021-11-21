@@ -24,7 +24,7 @@
                 <%
                     try {
                         Class.forName("com.mysql.cj.jdbc.Driver");
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos?serverTimezone=UTC", "root", "root");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://node6137-env-0497118.dal.togglebox.site:3306/db_ingsofdos?serverTimezone=UTC", "root", "F1KWWzhBZC");
                         Statement st = con.createStatement();
                         String sql = "select id, project_name from projects where estatus <> 'FIN' AND id NOT IN (SELECT project_id FROM project_backlogs);";
                         ResultSet rs = st.executeQuery(sql);
@@ -43,7 +43,7 @@
             <select name="usuarios" class="custom-select custom-select-lg mb-3" style="width:200px;">
                 <%                try {
                         Class.forName("com.mysql.cj.jdbc.Driver");
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos?serverTimezone=UTC", "root", "root");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://node6137-env-0497118.dal.togglebox.site:3306/db_ingsofdos?serverTimezone=UTC", "root", "F1KWWzhBZC");
                         Statement st = con.createStatement();
                         String sql = "select nombre, id_backlog from backlogs where id_backlog NOT IN (Select backlog_id from project_backlogs);";
                         ResultSet rs = st.executeQuery(sql);

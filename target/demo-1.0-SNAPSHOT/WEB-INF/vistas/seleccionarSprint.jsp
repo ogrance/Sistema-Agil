@@ -35,7 +35,7 @@
                     <%
                         try {
                             Class.forName("com.mysql.cj.jdbc.Driver");
-                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos?serverTimezone=UTC", "root", "root");
+                            Connection con = DriverManager.getConnection("jdbc:mysql://node6137-env-0497118.dal.togglebox.site:3306/db_ingsofdos?serverTimezone=UTC", "root", "F1KWWzhBZC");
                             Statement st = con.createStatement();
                             String sql = "select name, id_sprint from sprints where estatus = 'TO-DO'";
                             ResultSet rs = st.executeQuery(sql);

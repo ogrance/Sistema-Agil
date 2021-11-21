@@ -31,7 +31,7 @@
             <%
                     try {
                         Class.forName("com.mysql.cj.jdbc.Driver");
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos?serverTimezone=UTC", "root", "root");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://node6137-env-0497118.dal.togglebox.site:3306/db_ingsofdos?serverTimezone=UTC", "root", "F1KWWzhBZC");
                         Statement st = con.createStatement();
                         String sql = "select p.project_name, u.nombre from backlogs u join project_backlogs pm on u.id_backlog = pm.backlog_id join projects p on p.id=pm.project_id order by 1,2";
                         ResultSet rs = st.executeQuery(sql);
