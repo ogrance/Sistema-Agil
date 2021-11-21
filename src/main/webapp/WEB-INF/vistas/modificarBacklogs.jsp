@@ -39,7 +39,7 @@
                         <%
                             try {
                                 Class.forName("com.mysql.cj.jdbc.Driver");
-                                Connection con = DriverManager.getConnection("jdbc:mysql://node6137-env-0497118.dal.togglebox.site:3306/db_ingsofdos?serverTimezone=UTC", "root", "F1KWWzhBZC");
+                                Connection con = DriverManager.getConnection("jdbc:mysql://node6140-env-9249604.dal.togglebox.site:3306/db_ingsofdos?serverTimezone=UTC", "root", "ZuvyKpdpGa");
                                 Statement st = con.createStatement();
                                 String sql = "select project_name, id from projects where id not in (select project_id from backlogs)";
                                 ResultSet rs = st.executeQuery(sql);
