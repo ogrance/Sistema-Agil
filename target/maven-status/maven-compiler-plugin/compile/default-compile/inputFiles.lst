@@ -1,24 +1,28 @@
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\config\AppConfigure.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\dao\ProjectDao.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\controller\SeguridadController.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\model\Project.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\controller\DesarrolloController.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\model\RolesDetalle.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\controller\LoginController.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\model\ProjectMember.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\service\UsuarioServiceImpl.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\model\PermisosDetalle.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\model\Backlog.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\model\Permisos.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\model\Roles.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\dao\ProjectDaoImpl.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\model\UsuarioRol.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\dao\DesarrolloDao.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\service\UsuarioService.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\model\UserStorie.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\service\TestConexion.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\controller\ProyectoController.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\model\Usuario.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\dao\UsuarioDao.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\dao\UsuarioDaoImpl.java
-C:\Users\usuario\Desktop\Estudios\Facu\2021\Segundo Semestre\Ingenieria del Software 2\Trabajo Practico\SalvadorDelPuchero\src\main\java\SistemaAgil_IS2\dao\DesarrolloDaoImpl.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\service\TestConexion.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\model\Project.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\model\Sprint.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\model\ProjectMember.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\model\Roles.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\dao\UsuarioDaoImpl.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\dao\UsuarioDao.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\model\UsuarioRol.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\controller\DesarrolloControllers.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\model\Permisos.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\config\AppConfigure.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\controller\DesarrolloController.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\service\DesarrolloServiceImpl.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\dao\DesarrolloDaoImpl.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\model\UserStorie.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\dao\ProjectDao.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\service\UsuarioService.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\model\RolesDetalle.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\controller\SeguridadController.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\model\Usuario.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\model\PermisosDetalle.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\model\Backlog.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\controller\ProyectoController.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\service\UsuarioServiceImpl.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\dao\ProjectDaoImpl.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\controller\LoginController.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\dao\DesarrolloDao.java
+C:\Proyectos\SistemaAgil_IS2\src\main\java\SistemaAgil_IS2\service\DesarrolloService.java
