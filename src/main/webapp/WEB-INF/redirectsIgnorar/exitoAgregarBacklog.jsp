@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <title>Exito!</title>
-        <meta http-equiv="refresh" content="4;url=http://localhost:8081/SistemaAgil_IS2_war/DesarrolloController?accion=Redirect AM de Backlogs">
+        <meta http-equiv="refresh" content="4;url=http://localhost:9090/SistemaAgil_IS2_war/DesarrolloController?accion=Redirect AM de Backlogs">
         <script>
 			var count = 3; // Number of remaining seconds.
 			var counter; // Handle for the countdown event.
