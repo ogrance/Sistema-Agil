@@ -17,8 +17,8 @@ public class DesarrolloServiceImpl implements DesarrolloService{
     }
 
     @Override
-    public void actualizarSprintInicio(Integer sprintId) throws Exception {
-        desarrolloDao.actualizarSprintInicio(sprintId);
+    public void actualizarSprint(Integer sprintId,String estatus) throws Exception {
+        desarrolloDao.actualizarSprint(sprintId,estatus);
     }
 
 
@@ -31,6 +31,17 @@ public class DesarrolloServiceImpl implements DesarrolloService{
     @Override
     public void actualizarEstadoUS(String estado, Integer idUs) throws Exception {
         desarrolloDao.actualizarEstadoUS(estado, idUs);
+    }
+
+    @Override
+    public String verificarEstadoSprint(Integer idSprint) throws Exception {
+        return desarrolloDao.verificarEstadoSprint(idSprint);
+    }
+
+    @Override
+    public boolean obtenerUSPendientes(Integer idProyecto, Integer idSprint) {
+        boolean ret= desarrolloDao.obtenerUSPendientes(idProyecto,idSprint)==0;
+        return ret;
     }
 
 }

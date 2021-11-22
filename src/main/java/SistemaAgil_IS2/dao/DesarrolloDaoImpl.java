@@ -35,11 +35,15 @@ public class DesarrolloDaoImpl implements DesarrolloDao{
     Sprint sprt = new Sprint();
 
     private static final String OBTENER_SPRINTS_DISPONIBLES="select s.id_sprint, s.project_id,p.project_name ,s.name,s.duration,s.estatus from db_ingsofdos.sprints s " +
-                                                    "join db_ingsofdos.projects p on s.project_id =p.id where s.estatus = 'TO-DO'";
-    private static final String ACTUALIZAR_ESTADO_SPRINT_INICIO="update db_ingsofdos.sprints set estatus='DOING' where id_sprint=?";
+                                                    "join db_ingsofdos.projects p on s.project_id =p.id where s.estatus in ('TO-DO','DOING')";
+    private static final String VERIFICAR_ESTADO_SPRINT="select s.id_sprint, s.project_id,p.project_name ,s.name,s.duration,s.estatus from db_ingsofdos.sprints s "+
+                                                                "join db_ingsofdos.projects p on s.project_id =p.id where id_sprint=?";
+    private static final String ACTUALIZAR_ESTADO_SPRINT_INICIO="update db_ingsofdos.sprints set estatus=? where id_sprint=?";
     private static final String OBTENER_USER_STORIES_POR_ESTADOS="select t1.id_us,t1.descripcion,t1.estatus,t1.project_id,t2.project_name from user_stories t1 join projects t2 on t1.project_id=t2.id \n" +
                                                                 "join sprints t3 on t2.id=t3.project_id where t3.project_id =? and t3.id_sprint=?";
     private static  final String ACTUALIZAR_ESTADO_US= "UPDATE user_stories set estatus=? where id_us =?";
+    private static final String CANTIDAD_US_PENDIENTES="select count(*) from user_stories t1 join projects t2 on t1.project_id=t2.id\n" +
+            "join sprints t3 on t2.id=t3.project_id where t3.project_id =3 and t3.id_sprint=4 and t1.estatus in ('TO-DO','DOING')";
 
 //SECCION USER STORIES *SECCION USER STORIES *SECCION USER STORIES *SECCION USER STORIES *SECCION USER STORIES *    
     @Override
@@ -127,8 +131,8 @@ public class DesarrolloDaoImpl implements DesarrolloDao{
     }
 
     @Override
-    public void actualizarSprintInicio(Integer sprintId) throws Exception {
-        jdbcTemplate.update(ACTUALIZAR_ESTADO_SPRINT_INICIO, sprintId);
+    public void actualizarSprint(Integer sprintId,String status) throws Exception {
+        jdbcTemplate.update(ACTUALIZAR_ESTADO_SPRINT_INICIO,status, sprintId);
     }
 
     @Override
@@ -139,6 +143,20 @@ public class DesarrolloDaoImpl implements DesarrolloDao{
     @Override
     public void actualizarEstadoUS(String estado, Integer idUs) throws Exception {
         jdbcTemplate.update(ACTUALIZAR_ESTADO_US,estado,idUs);
+    }
+
+    @Override
+    public String verificarEstadoSprint(Integer sprintId) {
+        Sprint sprint=jdbcTemplate.queryForObject(VERIFICAR_ESTADO_SPRINT,new Object[]{sprintId},new SprintRowMapper() );
+        return sprint.getEstatus();
+    }
+
+    @Override
+    public Integer obtenerUSPendientes(Integer idProyecto, Integer idSprint) {
+
+        Integer ret=jdbcTemplate.queryForObject(CANTIDAD_US_PENDIENTES,new Object[]{idProyecto,idSprint},Integer.class);
+
+        return ret;
     }
 
     private class UserStorieRowMapper implements RowMapper<UserStorie>{
