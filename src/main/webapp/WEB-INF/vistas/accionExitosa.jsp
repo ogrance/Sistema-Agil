@@ -10,7 +10,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
         <title>Accion exitosa!</title>
+<<<<<<< HEAD
         <meta http-equiv="refresh" content="3;url=http://localhost:8080/demo/DesarrolloController?accion=ABM de User Stories">
+=======
+        <meta http-equiv="refresh" content="3;url=http://localhost:8081/SistemaAgil_IS2_war/DesarrolloController?accion=ABM de User Stories">
+>>>>>>> af6bf83b5dfb331cfe706c16ab1584f001096163
     </head>
     <body>
         <h1>Accion Exitosa!</h1>

@@ -69,7 +69,11 @@
                 <%
                     try {
                         Class.forName("com.mysql.cj.jdbc.Driver");
+<<<<<<< HEAD
                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos", "root", "454234798");
+=======
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos?serverTimezone=UTC", "root", "");
+>>>>>>> af6bf83b5dfb331cfe706c16ab1584f001096163
                         Statement st = con.createStatement();
                         String sql = "select * from user_stories where estatus='TO-DO' and sprint_id is NULL and project_id=(select project_id from sprints where id_sprint="+ sprint_id + ")";
                         ResultSet rs = st.executeQuery(sql);
