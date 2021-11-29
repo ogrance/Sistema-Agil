@@ -62,6 +62,10 @@ public class DesarrolloController extends HttpServlet {
     String seleccionarSprint = "WEB-INF/vistas/seleccionarSprint.jsp";
     String listarUsEnSprintSeleccionado = "WEB-INF/vistas/listarUsEnSprintSeleccionado.jsp";
     String agregarUsAlSprint = "WEB-INF/vistas/agregarUsAlSprint.jsp";
+    String listaSprintsDisponibles = "WEB-INF/vistas/listaSprintsDisponibles.jsp";
+    String kanban = "WEB-INF/vistas/tableroKanban.jsp";
+    String cambiarEstadoKanban = "WEB-INF/vistas/cambiarEstadoKanban.jsp";
+    String verSprintsFinalizados = "WEB-INF/vistas/verSprintsFinalizados.jsp";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -85,6 +89,8 @@ public class DesarrolloController extends HttpServlet {
             throws ServletException, IOException {
         String acceso = "";
         String action = request.getParameter("accion");
+        String actionDone = request.getParameter("accionDone");
+        String actionTODO = request.getParameter("accionTODO");
         if (action.equalsIgnoreCase("Desarrollo")) {
             acceso = paginaDesarrollo;
         } else if (action.equalsIgnoreCase("editust")) {
@@ -113,6 +119,11 @@ public class DesarrolloController extends HttpServlet {
             acceso = modificarSprint;
         } else if (action.equalsIgnoreCase("Seleccionar Sprints")){
             acceso = seleccionarSprint;
+        }else if (action.equalsIgnoreCase("kanban")){
+            request.setAttribute("idsp", request.getParameter("id"));
+            acceso = kanban;
+        }else if(action.equalsIgnoreCase("Gestion de Sprints")){
+            acceso = listaSprintsDisponibles;
         }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
@@ -123,6 +134,8 @@ public class DesarrolloController extends HttpServlet {
             throws ServletException, IOException {
         String acceso = "";
         String action = request.getParameter("accion");
+        String actionDone = request.getParameter("accionDone");
+        String actionTODO = request.getParameter("accionTODO");
         if (action.equalsIgnoreCase("ABM de User Stories")) {
             acceso = listarUs;
         } else if (action.equalsIgnoreCase("Agregar User Storie")) {
@@ -255,6 +268,40 @@ public class DesarrolloController extends HttpServlet {
                 request.setAttribute("idsp", usId);
                 acceso = listarUsEnSprintSeleccionado;
             }
+        } else if(action.equalsIgnoreCase("Gestion de Sprints")){
+            acceso = listaSprintsDisponibles;
+        }else if(action.equalsIgnoreCase("Mover")){
+            id = Integer.parseInt(request.getParameter("txtid"));
+            String newEstatus = request.getParameter("estatusStr");
+            u.setId_us(id);
+            u.setEstatus(newEstatus);
+            Boolean resultado = dao.editstatus(u);
+            String idsp = request.getParameter("txtids");
+            request.setAttribute("idsp", idsp);
+            acceso = kanban;
+        }else if(action.equalsIgnoreCase("Finalizar Sprint")){
+            id = Integer.parseInt(request.getParameter("txtids"));
+            s.setId_sprint(id);
+            Boolean resultado = dao.finalizarSprint(s);
+            acceso = listaSprintsDisponibles;
+        }else if(action.equalsIgnoreCase("Ver Sprints Finalizados")){
+            acceso = verSprintsFinalizados;
+        }else if(action.equalsIgnoreCase(">") || action.equalsIgnoreCase("<") || action.equalsIgnoreCase(">>") || action.equalsIgnoreCase("<<") ){
+            id = Integer.parseInt(request.getParameter("txtid"));
+            String newEstatus = "DOING";
+            if(action.equalsIgnoreCase(">") || action.equalsIgnoreCase("<<")){
+            newEstatus = "DOING";
+            }else if(action.equalsIgnoreCase("<")){
+            newEstatus = "TO-DO";
+            }else if(action.equalsIgnoreCase(">>")){
+                newEstatus = "DONE";
+            }
+            u.setId_us(id);
+            u.setEstatus(newEstatus);
+            Boolean resultado = dao.editstatus(u);
+            String idsp = request.getParameter("txtids");
+            request.setAttribute("idsp", idsp);
+            acceso = kanban;
         }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
