@@ -1,51 +1,61 @@
+<%@page import="SistemaAgil_IS2.model.Sprint"%>
+<%@page import="SistemaAgil_IS2.model.Backlog"%>
+<%@page import="SistemaAgil_IS2.dao.DesarrolloDaoImpl"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="SistemaAgil_IS2.model.Project"%>
+<%@page import="java.util.List"%>
+<%@page import="SistemaAgil_IS2.dao.ProjectDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Usuarios</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/recursos/css/estilo_lista_usuarios.css">
-</head>
-<body>
-<table class="usuarios-tabla">
-    <thead>
-    <tr>
-        <th>Id del Sprint</th>
-        <th>Nombre del Sprint</th>
-        <th>Id del Proyecto</th>
-        <th>Nombre del Proyecto</th>
-        <th>Duracion del Sprint</th>
-        <th>Estado del Sprint</th>
-        <th>Iniciar</th>
-        <th>Finalizar</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach var="sprintCont" items="${listaSprintsDisponibles}">
-        <c:url var="linkIniciar" value="actualizar-user-stories">
-            <c:param name="project_id" value="${sprintCont.project_id}"/>
-            <c:param name="id_sprint" value="${sprintCont.id_sprint}"/>
-        </c:url>
-        <c:url var="linkFinalizar" value="finalizar-sprint">
-            <c:param name="idUsuario" value="${sprintCont.id_sprint}"/>
-        </c:url>
-        <tr>
-            <td>${sprintCont.id_sprint}</td>
-            <td>${sprintCont.name}</td>
-            <td>${sprintCont.project_id}</td>
-            <td>${sprintCont.nombreProyecto}</td>
-            <td>${sprintCont.duration}</td>
-            <td>${sprintCont.estatus}</td>
-            <td><a href="${linkIniciar}"><input type="button" value="Iniciar"/></a></td>
-            <td><a href="${linkFinalizar}"><input type="button" value="Finalizar"onclick="if (!(confirm('Vas a finalizar este sprint. Estas Seguro? ')))return false"/></a></td>
-        </tr>
+    <head>
+        <title>Sprints</title>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/recursos/css/estilo_lista_usuarios.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/recursos/css/navbar.css">
+    </head>
+    <ul>
+        <li><a href="ProyectoController?accion=home">Home</a></li>
+        <li><a href="DesarrolloController?accion=Desarrollo">Pag. Desarrollo</a></li>
+        <li style="float:right"><a class="active" href="login">Cerrar Sesion</a></li>
+    </ul>
+    <body>
+        <table class="usuarios-tabla">
+            <thead>
+                <tr>
+                    <th>Sprint Id</th>
+                    <th>Project Id</th>
+                    <th>Nombre</th>
+                    <th>Duracion</th>
+                    <th>Estatus</th>
+                    <th>Tablero Kanban</th>
+                </tr>
+            </thead>
+            <%
+                DesarrolloDaoImpl dao = new DesarrolloDaoImpl();
+                List<Sprint> list = dao.listars(1);
+                Iterator<Sprint> iter = list.iterator();
+                Sprint sprnt = null;
+                while (iter.hasNext()) {
+                    sprnt = iter.next();
 
-    </c:forEach>
-    </tbody>
+            %>
+            <tbody>
+                <tr>
+                    <td><%= sprnt.getId_sprint()%></td>
+                    <td><%= sprnt.getProject_id()%></td>
+                    <td><%= sprnt.getName()%></td>
+                    <td><%= sprnt.getDuration()%></td>
+                    <td><%= sprnt.getEstatus()%></td>
+                    <td><a href="DesarrolloController?accion=kanban&id=<%= sprnt.getId_sprint()%>" ><input type="button" value="Kanban"/></a></td>
+                </tr>
+                <%}%>
+            </tbody>
 
-</table>
-<br/>
-
-<input class="btn" type="button" value="Inicio" onclick="window.location.href='ProyectoController';return false;"/>
-</body>
+        </table>
+        <br/>
+        <form action="DesarrolloController" method="POST" style="margin:0; padding:0">
+            <input class="btn" type="submit" name="accion" value="Ver Sprints Finalizados"/>
+        </form>
+    </body>
 </html>

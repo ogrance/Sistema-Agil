@@ -171,3 +171,12 @@ INSERT INTO `db_ingsofdos`.`usuario` (`idUsuario`, `nombreUsuario`, `nombre`, `a
 INSERT INTO `db_ingsofdos`.`usuario` (`idUsuario`, `nombreUsuario`, `nombre`, `apellido`, `passwrd`, `status`) VALUES ('6', 'Lili', 'Lili', 'Demattei', '456', 'e');
 
 INSERT INTO `db_ingsofdos`.`usuario` (`idUsuario`, `nombreUsuario`, `nombre`, `apellido`, `passwrd`, `status`) VALUES ('7', 'Sebastian', 'Sebastian', 'Fernandez', '456', 'e');
+
+--TRIGGERS
+CREATE DEFINER=`root`@`localhost` TRIGGER `user_stories_AFTER_UPDATE` AFTER UPDATE ON `user_stories` FOR EACH ROW BEGIN
+IF OLD.estatus <> NEW.estatus THEN
+		UPDATE sprints
+		SET estatus = 'DOING'
+		WHERE id_sprint = new.sprint_id;
+	END IF;
+END

@@ -11,7 +11,12 @@
     <head>
         <title>Seguridad</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/recursos/css/estilo_seguridad.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/recursos/css/navbar.css">
     </head>
+    <ul>
+        <li><a href="http://localhost:8080/demo/ProyectoController?accion=home">Home</a></li>
+        <li style="float:right"><a class="active" href="http://localhost:8080/demo/login">Cerrar Sesion</a></li>
+    </ul>
     <body>
         <p>Modulo ${modulo}</p>
 

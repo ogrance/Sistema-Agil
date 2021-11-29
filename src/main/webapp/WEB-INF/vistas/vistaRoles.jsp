@@ -11,7 +11,14 @@
 <head>
     <title>Resumen Roles</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/recursos/css/estilo_lista_usuarios.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/recursos/css/navbar.css">
 </head>
+<ul>
+        <li><a href="http://localhost:8080/demo/ProyectoController?accion=home">Home</a></li>
+        <li><a href='inicio_seguridad'>Pagina Seguridad</a></li>
+        <li><a href='http://localhost:8080/demo/seguridad/usuarios'>Usuarios</a></li>
+        <li style="float:right"><a class="active" href="http://localhost:8080/demo/login">Cerrar Sesion</a></li>
+</ul>
 
 <body>
 <table class="usuarios-tabla">
@@ -47,7 +54,6 @@
 </table>
 <br/>
 <button type="button" name="Asignar Rol" onclick="window.location.href='usuarios';return false;">Volver</button>
-<input class="btn" type="button" value="Inicio" onclick="window.location.href='inicio_seguridad';return false;"/>
 <br/><br/>
 <p style="color: red;padding-top:400px">${ErrorKeyDuplicada}</p>
 <p style="color: red;padding-top:400px">${ErrorDelete}</p>

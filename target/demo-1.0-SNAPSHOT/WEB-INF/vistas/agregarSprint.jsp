@@ -38,7 +38,11 @@
                             <%
                                 try {
                                     Class.forName("com.mysql.cj.jdbc.Driver");
+<<<<<<< HEAD
+                                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos", "root", "454234798");
+=======
                                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos?serverTimezone=UTC", "root", "");
+>>>>>>> af6bf83b5dfb331cfe706c16ab1584f001096163
                                     Statement st = con.createStatement();
                                     String sql = "select project_name, id from projects";
                                     ResultSet rs = st.executeQuery(sql);
@@ -55,7 +59,7 @@
                 </div>
                 
                 <br>
-                <input type="submit" name="accion" value="Crear Sprints" onclick="if (!(confirm('Vas a agregar este registro. Estas Seguro? '))) return false"/><br>
+                    <input type="submit" name="accion" value="Crear Sprints" onclick="if (!(confirm('Vas a agregar este registro. Estas Seguro? '))) return false"/><br>
             </div>
         </form>
 

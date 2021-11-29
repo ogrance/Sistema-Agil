@@ -33,7 +33,7 @@
             </thead>
             <%
                 DesarrolloDaoImpl dao = new DesarrolloDaoImpl();
-                List<Sprint> list = dao.listars();
+                List<Sprint> list = dao.listars(0);
                 Iterator<Sprint> iter = list.iterator();
                 Sprint sprnt = null;
                 while (iter.hasNext()) {

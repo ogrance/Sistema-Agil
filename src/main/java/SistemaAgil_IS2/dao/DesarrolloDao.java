@@ -11,7 +11,7 @@ import java.util.List;
 public interface DesarrolloDao {
     public List listar();
     public List listarb();
-    public List listars();
+    public List listars(int val);
     public List listarsus(int id);
     
     public UserStorie list(int id);
@@ -32,4 +32,10 @@ public interface DesarrolloDao {
     void actualizarSprintInicio(Integer sprintId) throws Exception;
     List<UserStorie> obtenerUserStoriesPorProyecto(Integer idProyecto, Integer idSprint) throws Exception;
     void actualizarEstadoUS(String estado,Integer idUs) throws Exception;
+    
+    public List listarToDo(int id);
+    public List listarDoing(int id);
+    public List listarDone(int id);
+    public Boolean editstatus(UserStorie us);
+    public Boolean finalizarSprint(Sprint s);
 }

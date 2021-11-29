@@ -5,7 +5,13 @@
 <head>
     <title>Usuarios</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/recursos/css/estilo_lista_usuarios.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/recursos/css/navbar.css">
 </head>
+<ul>
+        <li><a href="http://localhost:8080/demo/ProyectoController?accion=home">Home</a></li>
+        <li><a href='inicio_seguridad'>Pagina Seguridad</a></li>
+        <li style="float:right"><a class="active" href="http://localhost:8080/demo/login">Cerrar Sesion</a></li>
+    </ul>
 <body>
 <table class="usuarios-tabla">
     <thead>
@@ -14,7 +20,6 @@
         <th>Nombre de Usuario</th>
         <th>Nombre</th>
         <th>Apellido</th>
-        <th>Estado</th>
         <th>Modificar</th>
         <th>Eliminar</th>
         <th>Roles</th>
@@ -36,7 +41,6 @@
             <td>${usuarioCont.nombreUsuario}</td>
             <td>${usuarioCont.nombre}</td>
             <td>${usuarioCont.apellido}</td>
-            <td>${usuarioCont.status}</td>
             <td><a href="${linkModificar}"><input type="button" value="Modificar"/></a></td>
             <td><a href="${linkEliminar}"><input type="button" value="Eliminar"onclick="if (!(confirm('Vas a eliminar este registro. Estas Seguro? ')))return false"/></a></td>
             <td><a href="${linkAsignarRol}" ><input type="button" value="Asignar Rol"></a></td>
@@ -48,6 +52,5 @@
 </table>
 <br/>
 <input class="btn" type="button" value="Agregar Usuario" onclick="window.location.href='agregar_usuario';return false;"/>
-<input class="btn" type="button" value="Inicio" onclick="window.location.href='inicio_seguridad';return false;"/>
 </body>
 </html>

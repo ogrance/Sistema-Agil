@@ -25,7 +25,11 @@
     <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
     <property name="url" value="jdbc:mysql://localhost:3306/db_ingsofdos?serverTimezone=UTC"/> <!-- Si creaste tu bd con otro nombre, colocar despes de localhost:3306/ el nombre de tu esquema, en mi caso es db_ingsofdos-->
     <property name="username" value="root"/>
+<<<<<<< HEAD
+    <property name="password" value="454234798"/>  <!-- Colocar aqui tu pass del root, si no tiene pass dejar en blanco, si tiene pass cambiar el valor que esta puesto entre las comillas con tu correspondiente pass-->
+=======
     <property name="password" value=""/>  <!-- Colocar aqui tu pass del root, si no tiene pass dejar en blanco, si tiene pass cambiar el valor que esta puesto entre las comillas con tu correspondiente pass-->
+>>>>>>> af6bf83b5dfb331cfe706c16ab1584f001096163
 </bean>
 
 

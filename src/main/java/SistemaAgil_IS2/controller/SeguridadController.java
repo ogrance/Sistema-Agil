@@ -26,7 +26,7 @@ private UsuarioService usuarioService;
         mav.addObject("modulo","Seguridad");
         return mav;
     }
-
+    
     @RequestMapping(value = "/usuarios",method = RequestMethod.GET)
     public ModelAndView muestraUsuarios() {
         ModelAndView mav = new ModelAndView("listaUsuarios");
@@ -122,7 +122,7 @@ private UsuarioService usuarioService;
             e.printStackTrace();
         }
         return mav;
-    }
+    }   
     @RequestMapping(value = "/agregar-rol",method = RequestMethod.GET)
     public ModelAndView muestraFormularioAgregarRol()  {
         ModelAndView mav=new ModelAndView("formularioAgregarRol");
@@ -249,6 +249,6 @@ private UsuarioService usuarioService;
 
         return "vistaPermisos";
     }
-
+    
 
 }

@@ -11,7 +11,14 @@
 <head>
     <title>Resumen Permisos</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/recursos/css/estilo_lista_usuarios.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/recursos/css/navbar.css">
 </head>
+<ul>
+        <li><a href="http://localhost:8080/demo/ProyectoController?accion=home">Home</a></li>
+        <li><a href='inicio_seguridad'>Pagina Seguridad</a></li>
+        <li><a href='http://localhost:8080/demo/seguridad/permisos'>Permisos</a></li>
+        <li style="float:right"><a class="active" href="http://localhost:8080/demo/login">Cerrar Sesion</a></li>
+</ul>
 
 <body>
 <table class="usuarios-tabla">
