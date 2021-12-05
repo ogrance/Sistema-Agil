@@ -12,21 +12,21 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-    <context:component-scan base-package="SistemaAgil_IS2_war"/>
+    <context:component-scan base-package="SistemaAgil_IS2"/>
     <context:annotation-config/>
     <mvc:annotation-driven/>
-<bean id="usuarioService" class="SistemaAgil_IS2_war.service.UsuarioServiceImpl"/>
-<bean id="usuarioDao" class="SistemaAgil_IS2_war.dao.UsuarioDaoImpl"/>
+<bean id="usuarioService" class="SistemaAgil_IS2.service.UsuarioServiceImpl"/>
+<bean id="usuarioDao" class="SistemaAgil_IS2.dao.UsuarioDaoImpl"/>
 <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
     <property name="dataSource" ref="datasource"/>
 </bean>
 <bean id="datasource"
       class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-    <property name="url" value="jdbc:mysql://localhost:3306/db_ingsofdos?serverTimezone=UTC"/> <!-- Si creaste tu bd con otro nombre, colocar despes de localhost:3306/ el nombre de tu esquema, en mi caso es db_ingsofdos-->
+    <property name="url" value="jdbc:mysql://node6239-env-6654381.dal.togglebox.site:3306/db_ingsofdos?serverTimezone=UTC"/> <!-- Si creaste tu bd con otro nombre, colocar despes de node6239-env-6654381.dal.togglebox.site:3306/ el nombre de tu esquema, en mi caso es db_ingsofdos-->
     <property name="username" value="root"/>
 
-    <property name="password" value=""/>  <!-- Colocar aqui tu pass del root, si no tiene pass dejar en blanco, si tiene pass cambiar el valor que esta puesto entre las comillas con tu correspondiente pass-->
+    <property name="password" value="7neVkPepTt"/>  <!-- Colocar aqui tu pass del root, si no tiene pass dejar en blanco, si tiene pass cambiar el valor que esta puesto entre las comillas con tu correspondiente pass-->
 
 
 </bean>

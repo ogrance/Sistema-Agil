@@ -25,7 +25,7 @@
                     try {
                         Class.forName("com.mysql.cj.jdbc.Driver");
 
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos", "root", "");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://node6239-env-6654381.dal.togglebox.site:3306/db_ingsofdos", "root", "7neVkPepTt");
 
                         Statement st = con.createStatement();
                         String sql = "select id_us, descripcion from user_stories where id_us NOT IN (SELECT US_id from us_backlog)";
@@ -46,7 +46,7 @@
                 <%                try {
                         Class.forName("com.mysql.cj.jdbc.Driver");
 
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos", "root", "");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://node6239-env-6654381.dal.togglebox.site:3306/db_ingsofdos", "root", "7neVkPepTt");
 
                         Statement st = con.createStatement();
                         String sql = "select nombre, id_backlog from backlogs where id_backlog in (select backlog_id from project_backlogs)";

@@ -1,9 +1,9 @@
-package SistemaAgil_IS2_war.dao;
+package SistemaAgil_IS2.dao;
 
-import SistemaAgil_IS2_war.model.Backlog;
-import SistemaAgil_IS2_war.model.Sprint;
-import SistemaAgil_IS2_war.model.UserStorie;
-import SistemaAgil_IS2_war.service.TestConexion;
+import SistemaAgil_IS2.model.Backlog;
+import SistemaAgil_IS2.model.Sprint;
+import SistemaAgil_IS2.model.UserStorie;
+import SistemaAgil_IS2.service.TestConexion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;

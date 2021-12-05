@@ -1,4 +1,4 @@
-package SistemaAgil_IS2_war.service;
+package SistemaAgil_IS2.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,8 +8,8 @@ public class TestConexion {
     Connection con;
     String user = "root";
 
-    String pass = "";
-    String url = "jdbc:mysql://localhost:3306/db_ingsofdos?serverTimezone=UTC";
+    String pass = "7neVkPepTt";
+    String url = "jdbc:mysql://node6239-env-6654381.dal.togglebox.site:3306/db_ingsofdos?serverTimezone=UTC";
 
 
     public TestConexion() {

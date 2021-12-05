@@ -1,7 +1,7 @@
-package SistemaAgil_IS2_war.dao;
+package SistemaAgil_IS2.dao;
 
 
-import SistemaAgil_IS2_war.model.*;
+import SistemaAgil_IS2.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;

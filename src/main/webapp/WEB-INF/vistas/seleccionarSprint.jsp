@@ -2,13 +2,13 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="SistemaAgil_IS2_war.model.Sprint"%>
-<%@page import="SistemaAgil_IS2_war.model.Backlog"%>
-<%@page import="SistemaAgil_IS2_war.dao.DesarrolloDaoImpl"%>
+<%@page import="SistemaAgil_IS2.model.Sprint"%>
+<%@page import="SistemaAgil_IS2.model.Backlog"%>
+<%@page import="SistemaAgil_IS2.dao.DesarrolloDaoImpl"%>
 <%@page import="java.util.Iterator"%>
-<%@page import="SistemaAgil_IS2_war.model.Project"%>
+<%@page import="SistemaAgil_IS2.model.Project"%>
 <%@page import="java.util.List"%>
-<%@page import="SistemaAgil_IS2_war.dao.ProjectDaoImpl"%>
+<%@page import="SistemaAgil_IS2.dao.ProjectDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -36,7 +36,7 @@
                         try {
                             Class.forName("com.mysql.cj.jdbc.Driver");
 
-                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos", "root", "");
+                            Connection con = DriverManager.getConnection("jdbc:mysql://node6239-env-6654381.dal.togglebox.site:3306/db_ingsofdos", "root", "7neVkPepTt");
 
                             Statement st = con.createStatement();
                             String sql = "select name, id_sprint from sprints where estatus = 'TO-DO'";

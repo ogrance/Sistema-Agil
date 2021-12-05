@@ -1,7 +1,7 @@
-package SistemaAgil_IS2_war.service;
+package SistemaAgil_IS2.service;
 
-import SistemaAgil_IS2_war.model.Sprint;
-import SistemaAgil_IS2_war.model.UserStorie;
+import SistemaAgil_IS2.model.Sprint;
+import SistemaAgil_IS2.model.UserStorie;
 
 import java.util.List;
 

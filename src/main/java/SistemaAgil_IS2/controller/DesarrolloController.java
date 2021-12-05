@@ -1,11 +1,11 @@
-package SistemaAgil_IS2_war.controller;
+package SistemaAgil_IS2.controller;
 
-import SistemaAgil_IS2_war.dao.DesarrolloDaoImpl;
-import SistemaAgil_IS2_war.model.Backlog;
-import SistemaAgil_IS2_war.model.Sprint;
-import SistemaAgil_IS2_war.model.UserStorie;
-import SistemaAgil_IS2_war.model.Usuario;
-import SistemaAgil_IS2_war.service.DesarrolloService;
+import SistemaAgil_IS2.dao.DesarrolloDaoImpl;
+import SistemaAgil_IS2.model.Backlog;
+import SistemaAgil_IS2.model.Sprint;
+import SistemaAgil_IS2.model.UserStorie;
+import SistemaAgil_IS2.model.Usuario;
+import SistemaAgil_IS2.service.DesarrolloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

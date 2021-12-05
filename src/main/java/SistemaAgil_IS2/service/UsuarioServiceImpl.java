@@ -1,7 +1,7 @@
-package SistemaAgil_IS2_war.service;
+package SistemaAgil_IS2.service;
 
-import SistemaAgil_IS2_war.dao.UsuarioDao;
-import SistemaAgil_IS2_war.model.*;
+import SistemaAgil_IS2.dao.UsuarioDao;
+import SistemaAgil_IS2.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
