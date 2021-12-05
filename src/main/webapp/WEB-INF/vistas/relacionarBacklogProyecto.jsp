@@ -25,7 +25,7 @@
                     try {
                         Class.forName("com.mysql.cj.jdbc.Driver");
 
-                        Connection con = DriverManager.getConnection("jdbc:mysql://node6239-env-6654381.dal.togglebox.site:3306/db_ingsofdos", "root", "7neVkPepTt");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://node6243-env-6686218.dal.togglebox.site:3306/db_ingsofdos", "root", "Jigep9ZHEF");
 
                         Statement st = con.createStatement();
                         String sql = "select id, project_name from projects where estatus <> 'FIN' AND id NOT IN (SELECT project_id FROM project_backlogs);";
@@ -46,7 +46,7 @@
                 <%                try {
                         Class.forName("com.mysql.cj.jdbc.Driver");
 
-                        Connection con = DriverManager.getConnection("jdbc:mysql://node6239-env-6654381.dal.togglebox.site:3306/db_ingsofdos", "root", "7neVkPepTt");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://node6243-env-6686218.dal.togglebox.site:3306/db_ingsofdos", "root", "Jigep9ZHEF");
 
                         Statement st = con.createStatement();
                         String sql = "select nombre, id_backlog from backlogs where id_backlog NOT IN (Select backlog_id from project_backlogs);";

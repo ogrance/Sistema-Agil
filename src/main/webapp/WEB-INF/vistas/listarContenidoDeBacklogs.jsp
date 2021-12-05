@@ -32,7 +32,7 @@
                     try {
                         Class.forName("com.mysql.cj.jdbc.Driver");
 
-                        Connection con = DriverManager.getConnection("jdbc:mysql://node6239-env-6654381.dal.togglebox.site:3306/db_ingsofdos", "root", "7neVkPepTt");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://node6243-env-6686218.dal.togglebox.site:3306/db_ingsofdos", "root", "Jigep9ZHEF");
 
                         Statement st = con.createStatement();
                         String sql = "select u.nombre, p.descripcion from backlogs u join us_backlog pm on u.id_backlog = pm.backlog_id join user_stories p on p.id_us=pm.US_id order by 1,2";

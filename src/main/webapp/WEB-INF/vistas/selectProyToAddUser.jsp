@@ -25,7 +25,7 @@
                     try {
                         Class.forName("com.mysql.cj.jdbc.Driver");
 
-                        Connection con = DriverManager.getConnection("jdbc:mysql://node6239-env-6654381.dal.togglebox.site:3306/db_ingsofdos", "root", "7neVkPepTt");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://node6243-env-6686218.dal.togglebox.site:3306/db_ingsofdos", "root", "Jigep9ZHEF");
 
                         Statement st = con.createStatement();
                         String sql = "select * from projects where estatus<>'FIN'";
@@ -46,7 +46,7 @@
                 <%                try {
                         Class.forName("com.mysql.cj.jdbc.Driver");
 
-                        Connection con = DriverManager.getConnection("jdbc:mysql://node6239-env-6654381.dal.togglebox.site:3306/db_ingsofdos", "root", "7neVkPepTt");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://node6243-env-6686218.dal.togglebox.site:3306/db_ingsofdos", "root", "Jigep9ZHEF");
 
                         Statement st = con.createStatement();
                         String sql = "select * from usuario";
