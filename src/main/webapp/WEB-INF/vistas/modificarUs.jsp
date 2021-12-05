@@ -6,8 +6,8 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="SistemaAgil_IS2.model.UserStorie"%>
-<%@page import="SistemaAgil_IS2.dao.DesarrolloDaoImpl"%>
+<%@page import="SistemaAgil_IS2_war.model.UserStorie"%>
+<%@page import="SistemaAgil_IS2_war.dao.DesarrolloDaoImpl"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
@@ -41,17 +41,15 @@
                             <%
                                 try {
                                     Class.forName("com.mysql.cj.jdbc.Driver");
-<<<<<<< HEAD
-                                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos", "root", "454234798");
-=======
-                                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos?serverTimezone=UTC", "root", "");
->>>>>>> af6bf83b5dfb331cfe706c16ab1584f001096163
+
+                                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos", "root", "");
+
                                     Statement st = con.createStatement();
-                                    String sql = "select project_name, id from projects";
+                                    String sql = "select nombre, id_backlog from backlogs";
                                     ResultSet rs = st.executeQuery(sql);
                                     while (rs.next()) {
                             %>
-                            <option><%=rs.getString("project_name")%>(id:<%=rs.getInt("id")%>)</option>
+                            <option><%=rs.getString("nombre")%>(id:<%=rs.getInt("id_backlog")%>)</option>
                             <%
                                     }
                                 } catch (Exception e) {

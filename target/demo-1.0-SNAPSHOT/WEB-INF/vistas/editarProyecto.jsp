@@ -1,7 +1,7 @@
 
 
-<%@page import="SistemaAgil_IS2.model.Project"%>
-<%@page import="SistemaAgil_IS2.dao.ProjectDaoImpl"%>
+<%@page import="SistemaAgil_IS2_war.model.Project"%>
+<%@page import="SistemaAgil_IS2_war.dao.ProjectDaoImpl"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>

@@ -1,9 +1,9 @@
-package SistemaAgil_IS2.dao;
+package SistemaAgil_IS2_war.dao;
 
-import SistemaAgil_IS2.model.Backlog;
-import SistemaAgil_IS2.model.Sprint;
-import SistemaAgil_IS2.model.UserStorie;
-import SistemaAgil_IS2.service.TestConexion;
+import SistemaAgil_IS2_war.model.Backlog;
+import SistemaAgil_IS2_war.model.Sprint;
+import SistemaAgil_IS2_war.model.UserStorie;
+import SistemaAgil_IS2_war.service.TestConexion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -84,7 +84,7 @@ public class DesarrolloDaoImpl implements DesarrolloDao {
 
     @Override
     public Boolean add(UserStorie us) {
-        String sql = "insert into user_stories(descripcion,project_id,backlog_id) values('" + us.getDescripcion() + "'," + us.getProject_id() + ", (select id_backlog from backlogs where project_id=" + us.getProject_id() + "))";
+        String sql = "insert into user_stories(descripcion,backlog_id,project_id) values('" + us.getDescripcion() + "'," + us.getProject_id() + ", (select project_id from backlogs where id_backlog=" + us.getProject_id() + "))";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
@@ -98,7 +98,7 @@ public class DesarrolloDaoImpl implements DesarrolloDao {
 
     @Override
     public Boolean edit(UserStorie us) {
-        String sql = "update user_stories set descripcion='" + us.getDescripcion() + "', project_id=" + us.getProject_id() + ", backlog_id=(select id_backlog from backlogs where project_id=" + us.getProject_id() + ") where id_us=" + us.getId_us();
+        String sql = "update user_stories set descripcion='" + us.getDescripcion() + "',  backlog_id=" + us.getProject_id() + ",project_id=(select project_id from backlogs where id_backlog=" + us.getProject_id() + ") where id_us=" + us.getId_us();
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);

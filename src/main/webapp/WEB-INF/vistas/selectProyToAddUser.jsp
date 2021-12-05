@@ -24,11 +24,9 @@
                 <%
                     try {
                         Class.forName("com.mysql.cj.jdbc.Driver");
-<<<<<<< HEAD
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos", "root", "454234798");
-=======
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos?serverTimezone=UTC", "root", "");
->>>>>>> af6bf83b5dfb331cfe706c16ab1584f001096163
+
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos", "root", "");
+
                         Statement st = con.createStatement();
                         String sql = "select * from projects where estatus<>'FIN'";
                         ResultSet rs = st.executeQuery(sql);
@@ -47,11 +45,9 @@
             <select name="usuarios" class="custom-select custom-select-lg mb-3" style="width:200px;">
                 <%                try {
                         Class.forName("com.mysql.cj.jdbc.Driver");
-<<<<<<< HEAD
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos", "root", "454234798");
-=======
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos?serverTimezone=UTC", "root", "");
->>>>>>> af6bf83b5dfb331cfe706c16ab1584f001096163
+
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos", "root", "");
+
                         Statement st = con.createStatement();
                         String sql = "select * from usuario";
                         ResultSet rs = st.executeQuery(sql);

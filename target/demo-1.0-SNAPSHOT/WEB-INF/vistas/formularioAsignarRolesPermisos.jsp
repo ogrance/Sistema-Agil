@@ -14,10 +14,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/recursos/css/navbar.css">
 </head>
 <ul>
-        <li><a href="http://localhost:8080/demo/ProyectoController?accion=home">Home</a></li>
+        <li><a href="http://localhost:8081/SistemaAgil_IS2_war/ProyectoController?accion=home">Home</a></li>
         <li><a href='inicio_seguridad'>Pagina Seguridad</a></li>
-        <li><a href='http://localhost:8080/demo/seguridad/permisos'>Permisos</a></li>
-        <li style="float:right"><a class="active" href="http://localhost:8080/demo/login">Cerrar Sesion</a></li>
+        <li><a href='http://localhost:8081/SistemaAgil_IS2_war/seguridad/permisos'>Permisos</a></li>
+        <li style="float:right"><a class="active" href="http://localhost:8081/SistemaAgil_IS2_war/login">Cerrar Sesion</a></li>
 </ul>
 
 <h1>Asignar Roles al permiso: &nbsp${listaPermisosDetalle.permiso.nombrePermiso}&nbsp con alcance&nbsp  ${listaPermisosDetalle.permiso.alcance}</h1>

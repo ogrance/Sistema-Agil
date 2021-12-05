@@ -1,8 +1,8 @@
-package SistemaAgil_IS2.controller;
+package SistemaAgil_IS2_war.controller;
 
-import SistemaAgil_IS2.dao.ProjectDaoImpl;
-import SistemaAgil_IS2.model.Project;
-import SistemaAgil_IS2.model.ProjectMember;
+import SistemaAgil_IS2_war.dao.ProjectDaoImpl;
+import SistemaAgil_IS2_war.model.Project;
+import SistemaAgil_IS2_war.model.ProjectMember;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;

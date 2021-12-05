@@ -1,7 +1,7 @@
-package SistemaAgil_IS2.controller;
+package SistemaAgil_IS2_war.controller;
 
-import SistemaAgil_IS2.model.Usuario;
-import SistemaAgil_IS2.service.UsuarioService;
+import SistemaAgil_IS2_war.model.Usuario;
+import SistemaAgil_IS2_war.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;

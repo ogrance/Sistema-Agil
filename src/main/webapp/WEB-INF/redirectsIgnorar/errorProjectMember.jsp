@@ -10,11 +10,10 @@
     <head>
         <meta charset="utf-8">
         <title>Exito!</title>
-<<<<<<< HEAD
-        <meta http-equiv="refresh" content="4;url=http://localhost:8080/demo/ProyectoController?accion=RedirectAgregarProjectMembers">
-=======
+
+
         <meta http-equiv="refresh" content="4;url=http://localhost:8081/SistemaAgil_IS2_war/ProyectoController?accion=RedirectAgregarProjectMembers">
->>>>>>> af6bf83b5dfb331cfe706c16ab1584f001096163
+
         <script>
 			var count = 3; // Number of remaining seconds.
 			var counter; // Handle for the countdown event.

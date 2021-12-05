@@ -1,7 +1,7 @@
 <%@page import="java.util.Iterator"%>
-<%@page import="SistemaAgil_IS2.model.Project"%>
+<%@page import="SistemaAgil_IS2_war.model.Project"%>
 <%@page import="java.util.List"%>
-<%@page import="SistemaAgil_IS2.dao.ProjectDaoImpl"%>
+<%@page import="SistemaAgil_IS2_war.dao.ProjectDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

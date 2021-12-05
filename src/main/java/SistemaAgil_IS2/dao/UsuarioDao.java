@@ -1,6 +1,6 @@
-package SistemaAgil_IS2.dao;
+package SistemaAgil_IS2_war.dao;
 
-import SistemaAgil_IS2.model.*;
+import SistemaAgil_IS2_war.model.*;
 
 import java.util.List;
 

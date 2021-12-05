@@ -1,4 +1,4 @@
-package SistemaAgil_IS2.model;
+package SistemaAgil_IS2_war.model;
 
 public class Roles {
     private Integer idRole;

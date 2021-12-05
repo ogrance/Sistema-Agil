@@ -1,4 +1,4 @@
-package SistemaAgil_IS2.config;
+package SistemaAgil_IS2_war.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("SistemaAgil_IS2")
+@ComponentScan("SistemaAgil_IS2_war")
 public class AppConfigure implements WebMvcConfigurer {
 
     @Bean
