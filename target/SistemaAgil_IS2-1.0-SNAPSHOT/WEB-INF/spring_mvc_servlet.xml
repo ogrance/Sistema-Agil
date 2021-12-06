@@ -39,8 +39,7 @@
         <property name="prefix" value="/WEB-INF/vistas/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-
-<!--<mvc:resources mapping="/recursos/" location="/recursos/*"></mvc:resources>-->
+    <mvc:resources mapping="/recursos/**" location="/recursos/"></mvc:resources>
 
 
 
