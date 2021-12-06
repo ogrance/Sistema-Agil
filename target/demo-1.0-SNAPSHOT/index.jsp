@@ -12,17 +12,17 @@
 <header>
     <div class="wrapper">
         <div class="logo">
-            <img src="https://i.postimg.cc/mg4rWBmv/logo.png" alt="">
+            <img src="https://i.postimg.cc/FsV51PZJ/logo.png" alt="">
         </div>
         <ul class="nav-area">
-            <li><a href="#">Login</a></li>
+            <li><a href="#">Contactanos</a></li>
             <li><a href="#">Acerca de Nosotros</a></li>
         </ul>
     </div>
     <div class="welcome-text">
         <h1>
-            We are <span>Sistema Gestor de Proyectos Agile</span></h1>
-        <a href="#">Contactanos</a>
+           <span>Sistema Gestor de Proyectos Agile</span></h1>
+        <a href="login">Login</a>
     </div>
 </header>
 
