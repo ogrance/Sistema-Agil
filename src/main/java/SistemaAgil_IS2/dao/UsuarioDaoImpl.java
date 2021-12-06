@@ -1,7 +1,7 @@
-package SistemaAgil_IS2_war.dao;
+package SistemaAgil_IS2.dao;
 
 
-import SistemaAgil_IS2_war.model.*;
+import SistemaAgil_IS2.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -20,6 +20,9 @@ public class UsuarioDaoImpl implements UsuarioDao {
  private DataSource datasource;
 
  private static final String OBTENER_USUARIO="SELECT * FROM usuario WHERE nombreUsuario = ? AND passwrd = ?"; //se cambiaron el nombre de la tabla y sus columnas a recuparar, de acuerdo a tu configuracion interna cambiarla acordemente
+    /*"select t1.idUsuario,t1.nombre,t1.nombreUsuario,t1.apellido, t3.id_role, t3.descripcion,t1.passwrd,t1.status "+
+    " from usuario t1 join user_role t2 on t1.idUsuario=t2.user_id join roles t3 on  t2.role_id=t3.id_role";*/
+
  private static  final String OBTENER_USUARIOS="SELECT * FROM usuario";
  private static final String OBTENER_USUARIO_POR_ID="SELECT * FROM usuario WHERE idUsuario=?";
  private static final String INSERTAR_USUARIO="INSERT INTO usuario (nombreUsuario,nombre,apellido,passwrd) VALUES (?,?,?,?)";

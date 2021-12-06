@@ -15,11 +15,11 @@
     <!-- Ubicacion URL del servlet -->
     <servlet>
         <servlet-name>ProyectoController</servlet-name>
-        <servlet-class>SistemaAgil_IS2_war.controller.ProyectoController</servlet-class>
+        <servlet-class>SistemaAgil_IS2.controller.ProyectoController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DesarrolloController</servlet-name>
-        <servlet-class>SistemaAgil_IS2_war.controller.DesarrolloController</servlet-class>
+        <servlet-class>SistemaAgil_IS2.controller.DesarrolloController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>

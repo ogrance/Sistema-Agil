@@ -12,11 +12,11 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-    <context:component-scan base-package="SistemaAgil_IS2_war"/>
+    <context:component-scan base-package="SistemaAgil_IS2"/>
     <context:annotation-config/>
     <mvc:annotation-driven/>
-<bean id="usuarioService" class="SistemaAgil_IS2_war.service.UsuarioServiceImpl"/>
-<bean id="usuarioDao" class="SistemaAgil_IS2_war.dao.UsuarioDaoImpl"/>
+<bean id="usuarioService" class="SistemaAgil_IS2.service.UsuarioServiceImpl"/>
+<bean id="usuarioDao" class="SistemaAgil_IS2.dao.UsuarioDaoImpl"/>
 <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
     <property name="dataSource" ref="datasource"/>
 </bean>
@@ -39,8 +39,7 @@
         <property name="prefix" value="/WEB-INF/vistas/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-
-<!--<mvc:resources mapping="/recursos/" location="/recursos/*"></mvc:resources>-->
+    <mvc:resources mapping="/recursos/**" location="/recursos/"></mvc:resources>
 
 
 

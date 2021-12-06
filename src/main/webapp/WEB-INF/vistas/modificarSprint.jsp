@@ -1,13 +1,13 @@
 
 
-<%@page import="SistemaAgil_IS2_war.model.Sprint"%>
+<%@page import="SistemaAgil_IS2.model.Sprint"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="SistemaAgil_IS2_war.dao.DesarrolloDaoImpl"%>
+<%@page import="SistemaAgil_IS2.dao.DesarrolloDaoImpl"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>

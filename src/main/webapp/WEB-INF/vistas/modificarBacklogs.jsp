@@ -4,8 +4,8 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.DriverManager"%>
-<%@page import="SistemaAgil_IS2_war.dao.DesarrolloDaoImpl"%>
-<%@page import="SistemaAgil_IS2_war.model.Backlog"%>
+<%@page import="SistemaAgil_IS2.dao.DesarrolloDaoImpl"%>
+<%@page import="SistemaAgil_IS2.model.Backlog"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>

@@ -1,10 +1,10 @@
 
-package SistemaAgil_IS2_war.dao;
+package SistemaAgil_IS2.dao;
 
 
-import SistemaAgil_IS2_war.model.Backlog;
-import SistemaAgil_IS2_war.model.Sprint;
-import SistemaAgil_IS2_war.model.UserStorie;
+import SistemaAgil_IS2.model.Backlog;
+import SistemaAgil_IS2.model.Sprint;
+import SistemaAgil_IS2.model.UserStorie;
 import java.util.List;
 
 

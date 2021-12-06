@@ -1,10 +1,10 @@
-<%@page import="SistemaAgil_IS2_war.model.Sprint"%>
-<%@page import="SistemaAgil_IS2_war.model.Backlog"%>
-<%@page import="SistemaAgil_IS2_war.dao.DesarrolloDaoImpl"%>
+<%@page import="SistemaAgil_IS2.model.Sprint"%>
+<%@page import="SistemaAgil_IS2.model.Backlog"%>
+<%@page import="SistemaAgil_IS2.dao.DesarrolloDaoImpl"%>
 <%@page import="java.util.Iterator"%>
-<%@page import="SistemaAgil_IS2_war.model.Project"%>
+<%@page import="SistemaAgil_IS2.model.Project"%>
 <%@page import="java.util.List"%>
-<%@page import="SistemaAgil_IS2_war.dao.ProjectDaoImpl"%>
+<%@page import="SistemaAgil_IS2.dao.ProjectDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

@@ -1,8 +1,8 @@
-package SistemaAgil_IS2_war.dao;
+package SistemaAgil_IS2.dao;
 
-import SistemaAgil_IS2_war.model.Project;
-import SistemaAgil_IS2_war.model.ProjectMember;
-import SistemaAgil_IS2_war.service.TestConexion;
+import SistemaAgil_IS2.model.Project;
+import SistemaAgil_IS2.model.ProjectMember;
+import SistemaAgil_IS2.service.TestConexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -1,5 +1,5 @@
 
-package SistemaAgil_IS2_war.model;
+package SistemaAgil_IS2.model;
 
 
 public class Project {

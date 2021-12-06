@@ -1,4 +1,4 @@
-package SistemaAgil_IS2_war.service;
+package SistemaAgil_IS2.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

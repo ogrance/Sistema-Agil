@@ -1,10 +1,11 @@
-package SistemaAgil_IS2_war.service;
+package SistemaAgil_IS2.service;
 
-import SistemaAgil_IS2_war.dao.UsuarioDao;
-import SistemaAgil_IS2_war.model.*;
+import SistemaAgil_IS2.dao.UsuarioDao;
+import SistemaAgil_IS2.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,10 +14,19 @@ public class UsuarioServiceImpl implements UsuarioService {
 @Autowired
 private UsuarioDao usuarioDao;
     @Override
-    public Usuario validarUsuario(Usuario usuario) throws Exception {
+    public List<RolesDetalle> validarUsuario(Usuario usuario) throws Exception {
         Usuario user= usuarioDao.validarIngreso(usuario);
-      return user;
+        RolesDetalle rd=new RolesDetalle();
+        List<RolesDetalle> usuarioRol=new ArrayList<>();
+        if (user!=null) {
+             usuarioRol = usuarioDao.obtenerUsuarioYRol(user.getIdUsuario());
 
+        }
+        if (usuarioRol.size()==0){
+            rd.setUser(user);
+            usuarioRol.add(rd);
+        }
+        return usuarioRol;
     }
 
     @Override

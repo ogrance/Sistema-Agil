@@ -12,7 +12,7 @@
         <title>Exito!</title>
 
 
-        <meta http-equiv="refresh" content="4;url=http://localhost:8081/SistemaAgil_IS2_war/ProyectoController?accion=RedirectAgregarProjectMembers">
+        <meta http-equiv="refresh" content="4;url=http://localhost:8081/SistemaAgil_IS2_war//ProyectoController?accion=RedirectAgregarProjectMembers">
 
         <script>
 			var count = 3; // Number of remaining seconds.
