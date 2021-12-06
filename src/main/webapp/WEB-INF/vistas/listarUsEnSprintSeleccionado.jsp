@@ -70,7 +70,7 @@
                     try {
                         Class.forName("com.mysql.cj.jdbc.Driver");
 
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos", "root", "");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://node6243-env-6686218.dal.togglebox.site:3306/db_ingsofdos", "root", "Jigep9ZHEF");
 
                         Statement st = con.createStatement();
                         String sql = "select * from user_stories where estatus='TO-DO' and sprint_id is NULL and project_id=(select project_id from sprints where id_sprint="+ sprint_id + ")";

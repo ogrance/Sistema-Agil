@@ -36,7 +36,7 @@
                         try {
                             Class.forName("com.mysql.cj.jdbc.Driver");
 
-                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ingsofdos", "root", "");
+                            Connection con = DriverManager.getConnection("jdbc:mysql://node6243-env-6686218.dal.togglebox.site:3306/db_ingsofdos", "root", "Jigep9ZHEF");
 
                             Statement st = con.createStatement();
                             String sql = "select name, id_sprint from sprints where estatus = 'TO-DO'";
